@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorAccent">#4FABF7</color>
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryDark">#c7c7c7</color>
+
+
+    <color name="statusBarColor">#EAEAEA</color>
+
+<!--    <color name="colorAccent">#4FABF7</color>-->
+<!--    <color name="colorPrimary">#1d2027</color>-->
+<!--    <color name="colorPrimaryDark">#000000</color>-->
+
+    <color name="drawerSelectedItemColor">#4D4FABF7</color>
 </resources>
