@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         toolbarBinding = LayoutToolbarViewBinding.inflate(layoutInflater)
@@ -47,5 +50,13 @@ class MainActivity : AppCompatActivity() {
 
         window.navigationBarColor = getColor(R.color.colorPrimaryDark)
 
+        window.exitTransition = null
+        window.enterTransition = null
+
     }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
 }

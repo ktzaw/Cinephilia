@@ -3,7 +3,7 @@ package com.ktz.cinephilia.data.model
 import com.google.gson.annotations.SerializedName
 
 
-data class NowPlaying(
+data class Movies(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")

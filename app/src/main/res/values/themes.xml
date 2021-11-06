@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
 
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowIsTranslucent">true</item>
 
 <!--        <item name="fontFamily">Nunito</item>-->
 

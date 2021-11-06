@@ -36,6 +36,8 @@
         android:layout_alignTop="@id/toolbar_view"
         android:layout_marginTop="?actionBarSize"
         app:defaultNavHost="true"
+        android:fragmentEnterTransition="@android:color/transparent"
+        android:fragmentExitTransition="@android:color/transparent"
         app:navGraph="@navigation/mobile_navigation" />
 
 </RelativeLayout>

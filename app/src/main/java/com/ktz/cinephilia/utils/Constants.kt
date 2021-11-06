@@ -1,5 +1,7 @@
 package com.ktz.cinephilia.utils
 
+import com.ktz.cinephilia.service.MovieType
+
 const val BASE_URL = "https://api.themoviedb.org/3/"
 
 const val SEARCH_BASE_URL = "https://api.themoviedb.org/3/"
@@ -11,3 +13,5 @@ const val PARAM_QUERY = "query"
 
 const val API_GET_MOVIE_DETAIL = "{movie_id}"
 const val PARAM_MOVIE_ID = "movie_id"
+
+val DEFAULT_MOVIES_TYPE = MovieType.POPULAR

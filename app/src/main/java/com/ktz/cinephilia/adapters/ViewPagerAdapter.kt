@@ -4,7 +4,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ktz.cinephilia.NowPlayingFragment
+import com.ktz.cinephilia.service.MovieType
+import com.ktz.cinephilia.ui.fragment.movies.nowPlaying.NowPlayingFragment
+import com.ktz.cinephilia.ui.fragment.movies.popular.PopularFragment
+import com.ktz.cinephilia.ui.fragment.movies.upcoming.UpcomingFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -17,15 +20,24 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
 
         when (position) {
 
-            0 -> return NowPlayingFragment()
+            0 -> {
+                MovieType.NOW_PLAYING
+                return NowPlayingFragment().newInstance()
+            }
 
-            1 -> return NowPlayingFragment()
+            1 -> {
+                MovieType.POPULAR
+                return PopularFragment().newInstance()
+            }
 
-            2 -> return NowPlayingFragment()
+            2 -> {
+                MovieType.UPCOMING
+                return UpcomingFragment().newInstance()
+            }
 
         }
 
-        return NowPlayingFragment()
+        return NowPlayingFragment().newInstance()
 
     }
 

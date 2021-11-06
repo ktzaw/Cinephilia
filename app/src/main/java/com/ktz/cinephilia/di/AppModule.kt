@@ -1,9 +1,6 @@
 package com.ktz.cinephilia.di
 
-import com.ktz.cinephilia.BuildConfig
-import com.ktz.cinephilia.network.ApiService
-import com.ktz.cinephilia.repository.nowplaying.NowPlayingMovieRepositoryImpl
-import com.ktz.cinephilia.repository.nowplaying.NowPlayingMoviesRepository
+import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -37,7 +34,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMoviesApi(retrofit: Retrofit): ApiService =
+    fun provideMoviesApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
     @Provides

@@ -1,4 +1,4 @@
-package com.ktz.cinephilia.ui.fragment.home
+package com.ktz.cinephilia.ui.fragment.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,6 @@ import com.ktz.cinephilia.databinding.FragmentMoviesBinding
 
 class MoviesFragment : Fragment() {
 
-    private lateinit var moviesViewModel: MoviesViewModel
     private var _binding: FragmentMoviesBinding? = null
 
     private val binding get() = _binding!!
@@ -23,7 +22,6 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
 
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
 
@@ -38,6 +36,9 @@ class MoviesFragment : Fragment() {
             tabs.text = viewPagerAdapter.getTitle(position)
 
         }.attach()
+
+        requireActivity().window.exitTransition = null
+        requireActivity().window.enterTransition = null
 
         return binding.root
     }
