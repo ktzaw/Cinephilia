@@ -1,7 +1,9 @@
 package com.ktz.cinephilia.data.paged
 
+import android.widget.Toast
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.ktz.cinephilia.data.model.MovieResponse
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.service.MovieType
@@ -23,9 +25,9 @@ class MoviePagingDataSource @Inject constructor(
 
             LoadResult.Page(
 
-                data = response,
+                data = response.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = nextPage + 1
+                nextKey = if (nextPage == response.totalPages) null else nextPage + 1
             )
 
         } catch (e: Throwable) {
@@ -37,7 +39,7 @@ class MoviePagingDataSource @Inject constructor(
         apikey: String,
         page: Int
 
-    ): List<Movies> {
+    ): MovieResponse<Movies> {
 
         val response = when (movieType) {
 
@@ -59,7 +61,7 @@ class MoviePagingDataSource @Inject constructor(
 
         }
 
-        return response.results
+        return response
 
     }
 

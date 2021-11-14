@@ -16,19 +16,38 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowIsTranslucent">true</item>
 
-<!--        <item name="fontFamily">Nunito</item>-->
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!--        <item name="fontFamily">Nunito</item>-->
 
     </style>
 
     <style name="Theme.Cinephilia.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+    </style>
+
+
+    <style name="CustomToolbarStyle">
+
+        <item name="fontFamily">@font/nunito_extrabold</item>
+        <item name="android:fontFamily">@font/nunito_extrabold</item>
+        <item name="android:textSize">22sp</item>
+
     </style>
 
     <style name="Theme.Cinephilia.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Cinephilia.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TopBarStyle" parent="@style/Theme.MaterialComponents"/>
+    <style name="TopBarStyle" parent="@style/Theme.MaterialComponents.DayNight" />
+
+    <style name="MovieDetailTheme" parent="Theme.Cinephilia.NoActionBar">
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
 
 </resources>

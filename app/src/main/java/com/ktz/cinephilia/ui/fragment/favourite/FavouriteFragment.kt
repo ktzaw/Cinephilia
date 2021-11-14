@@ -1,4 +1,4 @@
-package com.ktz.cinephilia.ui.fragment.notifications
+package com.ktz.cinephilia.ui.fragment.favourite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ktz.cinephilia.databinding.FragmentNotificationsBinding
 
-class NotificationsFragment : Fragment() {
+class FavouriteFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var favouriteViewModel: FavouriteViewModel
     private var _binding: FragmentNotificationsBinding? = null
 
     // This property is only valid between onCreateView and
@@ -22,8 +22,8 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        favouriteViewModel =
+            ViewModelProvider(this).get(FavouriteViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root

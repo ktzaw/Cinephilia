@@ -1,8 +1,9 @@
 package com.ktz.cinephilia.ui.activities.main
 
+import android.app.Activity
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -26,37 +27,50 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
-        toolbarBinding = LayoutToolbarViewBinding.inflate(layoutInflater)
+        setUpToolbar()
+        setUpNavView()
 
+    }
+
+    private fun setUpToolbar() {
+
+        toolbarBinding = LayoutToolbarViewBinding.inflate(layoutInflater)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = getString(R.string.app_name)
+
         supportActionBar?.setDisplayShowTitleEnabled(true)
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun setUpNavView() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_movies, R.id.navigation_search, R.id.navigation_favourite
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        window.navigationBarColor = getColor(R.color.colorPrimaryDark)
 
-        window.exitTransition = null
-        window.enterTransition = null
-
+        if (isDarkTheme(activity = this)) {
+            window.navigationBarColor = getColor(R.color.statusBarColorNight)
+        } else {
+            window.navigationBarColor = getColor(R.color.statusBarColor)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun isDarkTheme(activity: Activity): Boolean {
+
+        return activity.resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+
     }
 
 }

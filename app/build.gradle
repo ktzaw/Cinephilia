@@ -4,7 +4,12 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
 }
+
+def apikeyPropertiesFile = rootProject.file("key.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdk 31
@@ -17,6 +22,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", apikeyProperties["apiKey"])
+
     }
 
     buildTypes {
@@ -38,6 +46,7 @@ android {
     }
 
 }
+
 
 dependencies {
 
@@ -98,11 +107,25 @@ dependencies {
 
     //paging3.0
     def paging_version = "3.0.1"
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     // alternatively - without Android dependencies for tests
-    testImplementation "androidx.paging:paging-common:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
 
+    //Expandable Text View
+    implementation 'com.libRG:customtextview:2.1'
 
+    implementation 'com.borjabravo:readmoretextview:2.1.0'
 
+    //Youtube Player View
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 
+    //circleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //moshi
+    implementation 'com.squareup.moshi:moshi:1.12.0'
+    implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+
+    //timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

@@ -37,8 +37,6 @@ class MoviesFragment : Fragment() {
 
         }.attach()
 
-        requireActivity().window.exitTransition = null
-        requireActivity().window.enterTransition = null
 
         return binding.root
     }

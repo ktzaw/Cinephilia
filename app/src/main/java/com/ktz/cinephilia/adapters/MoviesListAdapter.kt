@@ -48,6 +48,7 @@ class MoviesListAdapter(private val movieClicked: (Movies) -> Unit) :
                 .load(IMAGE_URL + data.posterPath)
                 .placeholder(R.drawable.movie_placeholder)
                 .error(R.drawable.movie_placeholder)
+                .centerCrop()
                 .into(binding.ivItemMovie)
 
             itemView.setOnClickListener {

@@ -1,10 +1,10 @@
-package com.ktz.cinephilia.ui.fragment.dashboard
+package com.ktz.cinephilia.ui.fragment.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

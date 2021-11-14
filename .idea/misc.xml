@@ -5,13 +5,23 @@
       <map>
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/drawer_selected_item.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/drawer_selected_text.xml" value="0.2064814814814815" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_baseline_arrow_back_white_24.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.25462962962962965" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/like.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/like_animation.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/side_nav_bar.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/tab_indicator.xml" value="0.25462962962962965" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/unlike.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/unlike_night.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/font/font.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout-v28/activity_main.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout-v28/activity_movie_detail.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/activity_main2.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/activity_movie_detail.xml" value="0.24714828897338403" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/app_bar_main.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/app_bar_main2.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/content_main.xml" value="0.15925925925925927" />
@@ -45,5 +55,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

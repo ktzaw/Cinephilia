@@ -5,34 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginBottom="56dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.fragment.movies.MoviesFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
         android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/colorPrimary"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:background="?colorPrimary"
         android:orientation="vertical"
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_indicator"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="4dp"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabIndicatorHeight="40dp"
-        app:tabIndicatorAnimationMode="linear"
         app:tabIndicatorAnimationDuration="@integer/material_motion_duration_medium_2"
+        app:tabIndicatorAnimationMode="linear"
+        app:tabIndicatorColor="@color/colorAccent"
         app:tabRippleColor="@android:color/transparent"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:tabIndicatorHeight="40dp"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorPrimary"/>
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="56dp"/>
+
 
 
 </LinearLayout>

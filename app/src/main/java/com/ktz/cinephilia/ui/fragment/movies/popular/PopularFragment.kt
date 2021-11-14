@@ -10,12 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.ktz.cinephilia.R
 import com.ktz.cinephilia.adapters.MovieLoadSateAdapter
 import com.ktz.cinephilia.adapters.MoviesListAdapter
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.databinding.FragmentMoviesListBinding
 import com.ktz.cinephilia.utils.GridItemNumber
+import com.ktz.cinephilia.utils.isNetworkAvailable
 import com.ktz.cinephilia.viewmodels.PopularViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -48,15 +50,10 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val noOfColumns =
-            GridItemNumber().calculateNoOfColumns(requireActivity().applicationContext, 120f)
-        val gridLayoutManager = GridLayoutManager(context, noOfColumns)
-
-        binding.rvMovieList.adapter = mAdapter
-        binding.rvMovieList.layoutManager = gridLayoutManager
-
-        binding.swipeRefresh.isRefreshing = true
+        setUpAdapter()
         binding.swipeRefresh.isEnabled = false
+
+        binding.ivNoItem.visibility = View.VISIBLE
 
         return view
     }
@@ -64,6 +61,12 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpLoadStateAdapter()
+        submitData()
+
+    }
+
+    private fun setUpLoadStateAdapter() {
         val header = MovieLoadSateAdapter()
         binding.rvMovieList.adapter = mAdapter.withLoadStateHeaderAndFooter(
 
@@ -92,16 +95,15 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
             }
 
         }
+    }
 
-        lifecycleScope.launch {
-            viewModel.loadPopularMovies().collectLatest {
-                mAdapter.submitData(it)
+    private fun setUpAdapter() {
+        val noOfColumns =
+            GridItemNumber().calculateNoOfColumns(requireActivity().applicationContext, 120f)
+        val gridLayoutManager = GridLayoutManager(context, noOfColumns)
 
-            }
-        }
-
-        binding.swipeRefresh.isRefreshing = mAdapter.itemCount == 0
-
+        binding.rvMovieList.adapter = mAdapter
+        binding.rvMovieList.layoutManager = gridLayoutManager
     }
 
     override fun onDestroyView() {
@@ -113,6 +115,49 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
 
         Toast.makeText(context, "$movieId", Toast.LENGTH_SHORT).show()
 
+    }
+
+    private fun submitData() {
+
+        binding.ivNoItem.visibility = View.VISIBLE
+        binding.swipeRefresh.isRefreshing = true
+
+        if (requireContext().isNetworkAvailable()) {
+
+            binding.ivNoItem.visibility = View.GONE
+            binding.rvMovieList.visibility = View.VISIBLE
+
+            lifecycleScope.launch {
+                viewModel.loadPopularMovies().collectLatest {
+                    mAdapter.submitData(it)
+
+                }
+            }
+
+            binding.swipeRefresh.isRefreshing = mAdapter.itemCount == 0
+
+        } else {
+
+
+            binding.swipeRefresh.isRefreshing = false
+            lifecycleScope.launch {
+                viewModel.loadPopularMovies().collectLatest {
+                    mAdapter.submitData(it)
+
+                }
+            }
+
+            val snack = Snackbar.make(
+                requireContext(),
+                requireView(),
+                "Check your network and try again!",
+                Snackbar.LENGTH_INDEFINITE
+            )
+            snack.setAction("Retry", View.OnClickListener {
+                submitData()
+            })
+            snack.show()
+        }
     }
 
 }

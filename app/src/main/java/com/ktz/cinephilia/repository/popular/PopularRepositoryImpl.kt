@@ -21,9 +21,9 @@ class PopularRepositoryImpl @Inject constructor(
         return Pager(
             config = PagingConfig(
 
-                pageSize = 20,
+                pageSize = 30,
                 enablePlaceholders = true,
-                initialLoadSize = 3
+                initialLoadSize = 1
 
             ), pagingSourceFactory = { pagingSourceFactory }
         ).flow

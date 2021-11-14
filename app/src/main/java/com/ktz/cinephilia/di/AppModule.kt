@@ -1,10 +1,15 @@
 package com.ktz.cinephilia.di
 
+import android.app.Application
+import android.content.Context
+import com.ktz.cinephilia.data.db.MoviesDatabase
+import com.ktz.cinephilia.data.db.dao.FavouriteDao
 import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.reactivex.disposables.CompositeDisposable
 import okhttp3.OkHttpClient
@@ -28,7 +33,6 @@ class AppModule {
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -39,6 +43,14 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
+    fun provideMovieDatabase(application: Application): MoviesDatabase =
+        MoviesDatabase.getInstance(application)
+
+    @Provides
+    @Singleton
+    fun provideFavouriteDao(db: MoviesDatabase): FavouriteDao {
+        return db.favouriteDao
+    }
+
 
 }
