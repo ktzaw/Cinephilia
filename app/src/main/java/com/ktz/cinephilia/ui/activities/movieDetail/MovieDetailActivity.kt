@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.room.withTransaction
@@ -15,11 +17,12 @@ import com.ktz.cinephilia.databinding.ActivityMovieDetailBinding
 import com.ktz.cinephilia.utils.IMAGE_URL
 import com.ktz.cinephilia.utils.toastShort
 import com.ktz.cinephilia.viewmodels.MovieDetailViewModel
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import kotlin.concurrent.thread
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class MovieDetailActivity : AppCompatActivity() {
@@ -28,7 +31,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private val viewModel: MovieDetailViewModel by viewModels()
 
-    private var movieId by Delegates.notNull<Int>()
+    private var movieId: Int = 0
 
     lateinit var movieDetail: MovieDetail
 
@@ -39,14 +42,15 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.customToolbarDetail.setNavigationOnClickListener { onBackPressed() }
         setUpToolbar()
 
         movieId = intent.extras?.get("MOVIE_ID") as Int
+        Timber.d(movieId.toString())
+        bindData(movieId)
 
         database = MoviesDatabase.getInstance(application)
-        setUpFavourite()
-        bindData()
 
     }
 
@@ -73,9 +77,12 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private fun setUpFavourite() {
 
-        binding.cbFavourite.isChecked = isFavourite()
+        lifecycleScope.launch {
 
-        binding.cbFavourite.setOnCheckedChangeListener { button, isChecked ->
+            binding.cbFavourite.isChecked = viewModel.isFavourite(movieId)
+
+        }
+        binding.cbFavourite.setOnCheckedChangeListener { _, isChecked ->
 
             if (isChecked) {
 
@@ -90,31 +97,42 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun bindData() {
+    private fun bindData(id: Int) {
 
 
         lifecycleScope.launch {
 
-            movieDetail = viewModel.loadMovieDetail(movieId)
+            movieDetail = viewModel.loadMovieDetail(id)
 
             Glide.with(this@MovieDetailActivity)
-                .load(IMAGE_URL + viewModel.loadMovieDetail(movieId).posterPath)
+                .load(IMAGE_URL + movieDetail.posterPath)
                 .placeholder(R.drawable.movie_placeholder)
                 .error(R.drawable.movie_placeholder)
                 .centerCrop()
                 .into(binding.ivDetailMovieImage)
 
             binding.tvMovieName.text = movieDetail.title
-            binding.tvMovieOverview.text = movieDetail.overview
-            binding.tvDirectorName.text = " ${movieDetail.releaseDate}"
 
+            if (movieDetail.overview.isEmpty()) {
+                binding.tvMovieOverview.text = "No Overview available"
+            } else {
+                binding.tvMovieOverview.text = movieDetail.overview
+            }
+
+            binding.tvReleaseDate.text = movieDetail.releaseDate
+
+
+
+            setUpFavourite()
+
+            bindTrailer(id)
 
         }
     }
 
     private fun saveMovie(movieDetail: MovieDetail) {
 
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launch {
             database.withTransaction {
 
                 database.favouriteDao.insertFavouriteMovie(movieDetail)
@@ -125,7 +143,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private fun removeMovie(id: Int) {
 
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launch {
             database.withTransaction {
                 database.favouriteDao.delete(id)
             }
@@ -133,16 +151,54 @@ class MovieDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun isFavourite(): Boolean {
+    private suspend fun bindTrailer(id: Int) {
 
-        var isFavouriteMovie = false
+        val movieTrailer = viewModel.loadMovieTrailer(id)
 
-        thread {
-            isFavouriteMovie = database.favouriteDao.isFavourite(movieId)
+        if (movieTrailer.results.isNotEmpty()) {
+            movieTrailer.results.map {
+
+                if (it.official && it.type == "Trailer") {
+
+                    handlePlayer(it.key)
+
+                } else if (it.type == "Trailer") {
+
+                    handlePlayer(it.key)
+
+                } else {
+
+                    handlePlayer(it.key)
+
+                }
+            }
+        } else {
+
+            binding.cardYoutubePlayer.visibility = View.GONE
+            binding.youtubePlayerView.visibility = View.GONE
+
         }
+    }
 
-        return isFavouriteMovie
+    private fun handlePlayer(youtubeKey: String) {
 
+        binding.youtubePlayerView.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
+
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                super.onReady(youTubePlayer)
+                youTubePlayer.cueVideo(youtubeKey, 0f)
+                Timber.d("Player Key $youtubeKey")
+            }
+
+        })
+
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.youtubePlayerView.release()
     }
 
 }

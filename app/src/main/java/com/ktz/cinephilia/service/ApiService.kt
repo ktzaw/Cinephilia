@@ -3,6 +3,7 @@ package com.ktz.cinephilia.service
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.data.model.MovieResponse
 import com.ktz.cinephilia.data.model.Movies
+import com.ktz.cinephilia.data.model.VideoResponses
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -26,7 +27,14 @@ interface ApiService {
 
     @GET("movie/{movie_id}")
     suspend fun loadMovieDetail(
-        @Path("movie_id") movieId: Int, @Query("api_key") apiKey: String
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
     ): MovieDetail
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun loadMovieTrailer(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
+    ): VideoResponses
 
 }

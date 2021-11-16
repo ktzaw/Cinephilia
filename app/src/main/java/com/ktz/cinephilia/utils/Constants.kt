@@ -12,5 +12,3 @@ const val PARAM_API_KEY = "api_key"
 const val API_KEY= BuildConfig.API_KEY
 const val PARAM_QUERY = "query"
 
-const val API_GET_MOVIE_DETAIL = "{movie_id}"
-const val PARAM_MOVIE_ID = "movie_id"

@@ -1,8 +1,11 @@
 package com.ktz.cinephilia.data.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.ktz.cinephilia.service.ApiService
 
 
 @Entity(tableName = "favourite_table")
@@ -19,9 +22,6 @@ data class MovieDetail(
     val genres: List<Genre>,
     @SerializedName("homepage")
     val homepage: String,
-    @PrimaryKey(autoGenerate = false)
-    @SerializedName("id")
-    val id: Int,
     @SerializedName("imdb_id")
     val imdbId: String,
     @SerializedName("original_language")
@@ -57,8 +57,16 @@ data class MovieDetail(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int,
+    // AppendToResponse
+    @PrimaryKey(autoGenerate = false)
+    @SerializedName("id")
+    val id: Int
+
 ) {
+
+
+
     data class Genre(
         @SerializedName("id")
         val id: Int,
