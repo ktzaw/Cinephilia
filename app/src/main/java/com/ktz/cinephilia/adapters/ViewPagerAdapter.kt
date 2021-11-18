@@ -1,15 +1,22 @@
 package com.ktz.cinephilia.adapters
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ktz.cinephilia.service.MovieType
+import com.ktz.cinephilia.ui.fragment.favourite.FavouriteMoviesFragment
 import com.ktz.cinephilia.ui.fragment.movies.nowPlaying.NowPlayingFragment
 import com.ktz.cinephilia.ui.fragment.movies.popular.PopularFragment
 import com.ktz.cinephilia.ui.fragment.movies.upcoming.UpcomingFragment
+import com.ktz.cinephilia.utils.isNetworkAvailable
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class ViewPagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
+    val context: Context
+) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     private val tabs = arrayOf("Now Playing", "Popular", "Upcoming")

@@ -14,7 +14,7 @@ class GenreIdConverter {
         if (data == null) {
             return Collections.emptyList()
         }
-        val listType = object : TypeToken<List<Int>>() {}.type
+        val listType = object : TypeToken<List<MovieDetail.Genre>>() {}.type
         return gson.fromJson(data, listType)
     }
 

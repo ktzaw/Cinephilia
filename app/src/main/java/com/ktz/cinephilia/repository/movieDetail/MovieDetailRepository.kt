@@ -8,5 +8,8 @@ interface MovieDetailRepository {
 
     suspend fun getMovieDetail(movieId:Int): MovieDetail
     suspend fun getVideo(movieId: Int):VideoResponses
+    suspend fun addToFavourite(movieDetail: MovieDetail)
+    suspend fun removeFromFavourite(movieId: Int)
+
 
 }

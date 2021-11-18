@@ -64,7 +64,6 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         setUpWithLoadStateAdapter()
         submitData()
 

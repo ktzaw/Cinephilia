@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -84,15 +85,20 @@ class MovieDetailActivity : AppCompatActivity() {
         }
         binding.cbFavourite.setOnCheckedChangeListener { _, isChecked ->
 
+            val bounceAnimation = AnimationUtils.loadAnimation(
+                this, R.anim.bounce
+            )
+
+            binding.cbFavourite.animation = bounceAnimation
+
             if (isChecked) {
 
                 saveMovie(movieDetail)
-                toastShort(this@MovieDetailActivity, "Added to Favourite")
 
             } else {
 
-                toastShort(this@MovieDetailActivity, "Removed from favourite")
                 removeMovie(movieId)
+
             }
         }
     }
@@ -121,8 +127,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
             binding.tvReleaseDate.text = movieDetail.releaseDate
 
-
-
             setUpFavourite()
 
             bindTrailer(id)
@@ -133,20 +137,14 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun saveMovie(movieDetail: MovieDetail) {
 
         lifecycleScope.launch {
-            database.withTransaction {
-
-                database.favouriteDao.insertFavouriteMovie(movieDetail)
-
-            }
+            viewModel.addToFavourite(movieDetail)
         }
     }
 
     private fun removeMovie(id: Int) {
 
         lifecycleScope.launch {
-            database.withTransaction {
-                database.favouriteDao.delete(id)
-            }
+            viewModel.removeFromFavourite(id)
         }
 
     }

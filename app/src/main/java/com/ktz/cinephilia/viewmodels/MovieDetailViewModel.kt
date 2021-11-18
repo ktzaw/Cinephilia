@@ -40,4 +40,16 @@ class MovieDetailViewModel @Inject constructor(
         return isFavourite
     }
 
+    suspend fun addToFavourite(movieDetail: MovieDetail) {
+
+        return repository.addToFavourite(movieDetail)
+
+    }
+
+    suspend fun removeFromFavourite(movieId: Int) {
+
+        return repository.removeFromFavourite(movieId)
+
+    }
+
 }

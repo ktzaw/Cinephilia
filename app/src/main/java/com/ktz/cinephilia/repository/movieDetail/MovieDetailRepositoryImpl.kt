@@ -1,16 +1,17 @@
 package com.ktz.cinephilia.repository.movieDetail
 
-import com.ktz.cinephilia.BuildConfig
+import androidx.room.withTransaction
+import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.data.model.VideoResponses
 import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.utils.API_KEY
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieDetailRepositoryImpl @Inject constructor(
 
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val database: MoviesDatabase
 
 ) : MovieDetailRepository {
 
@@ -20,5 +21,21 @@ class MovieDetailRepositoryImpl @Inject constructor(
 
     override suspend fun getVideo(movieId: Int): VideoResponses {
         return apiService.loadMovieTrailer(movieId, API_KEY)
+    }
+
+    override suspend fun addToFavourite(movieDetail: MovieDetail) {
+        database.withTransaction {
+
+            database.favouriteDao.insertFavouriteMovie(movieDetail)
+
+        }
+    }
+
+    override suspend fun removeFromFavourite(movieId: Int) {
+        database.withTransaction {
+
+            database.favouriteDao.delete(movieId)
+
+        }
     }
 }

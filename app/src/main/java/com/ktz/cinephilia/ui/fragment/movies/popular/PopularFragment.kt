@@ -1,5 +1,6 @@
 package com.ktz.cinephilia.ui.fragment.movies.popular
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.ktz.cinephilia.adapters.MovieLoadSateAdapter
 import com.ktz.cinephilia.adapters.MoviesListAdapter
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.databinding.FragmentMoviesListBinding
+import com.ktz.cinephilia.ui.activities.movieDetail.MovieDetailActivity
 import com.ktz.cinephilia.utils.GridItemNumber
 import com.ktz.cinephilia.utils.isNetworkAvailable
 import com.ktz.cinephilia.viewmodels.PopularViewModel
@@ -113,7 +115,11 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
 
     private fun intentToMovieDetail(movieId: Int) {
 
-        Toast.makeText(context, "$movieId", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this.context, MovieDetailActivity::class.java).apply {
+            putExtra("MOVIE_ID", movieId)
+        }
+
+        startActivity(intent)
 
     }
 

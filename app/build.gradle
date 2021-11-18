@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 
 }
 
@@ -108,12 +110,10 @@ dependencies {
     //paging3.0
     def paging_version = "3.0.1"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    // alternatively - without Android dependencies for tests
     testImplementation "androidx.paging:paging-common-ktx:$paging_version"
 
     //Expandable Text View
     implementation 'com.libRG:customtextview:2.1'
-
     implementation 'com.borjabravo:readmoretextview:2.1.0'
 
     //Youtube Player View
@@ -128,4 +128,12 @@ dependencies {
 
     //timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //Firebase Crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 }

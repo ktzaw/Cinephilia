@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "309395654065",
+    "project_id": "cinephilia-6dd96",
+    "storage_bucket": "cinephilia-6dd96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309395654065:android:c3a79a00be5b46f43f6990",
+        "android_client_info": {
+          "package_name": "com.ktz.cinephilia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309395654065-a3rqe4heon8p8ci1ql54um9o756hf1a6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ktz.cinephilia",
+            "certificate_hash": "5aefa45f71df307690e635baeb59b70a48251df8"
+          }
+        },
+        {
+          "client_id": "309395654065-ckcd9sdi8vdr99icjofls4i6fdjmkopb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvBGx9Qyr32lr-vhBWt4ozgFuKqXqcziI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309395654065-ckcd9sdi8vdr99icjofls4i6fdjmkopb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

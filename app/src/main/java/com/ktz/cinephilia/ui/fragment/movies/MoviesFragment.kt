@@ -25,7 +25,8 @@ class MoviesFragment : Fragment() {
 
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
 
-        val viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+        val viewPagerAdapter =
+            ViewPagerAdapter(childFragmentManager, lifecycle, requireActivity().applicationContext)
 
         binding.viewpager2.adapter = viewPagerAdapter
 
