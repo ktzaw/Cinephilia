@@ -1,12 +1,11 @@
 package com.ktz.cinephilia.data.paged
 
-import android.widget.Toast
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.ktz.cinephilia.data.model.MovieResponse
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.service.ApiService
-import com.ktz.cinephilia.service.MovieType
+import com.ktz.cinephilia.utils.MovieType
 import com.ktz.cinephilia.utils.API_KEY
 import javax.inject.Inject
 

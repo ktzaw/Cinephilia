@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -17,6 +18,7 @@ import com.ktz.cinephilia.adapters.MovieLoadSateAdapter
 import com.ktz.cinephilia.adapters.MoviesListAdapter
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.databinding.FragmentMoviesListBinding
+import com.ktz.cinephilia.databinding.LayoutToolbarViewBinding
 import com.ktz.cinephilia.ui.activities.movieDetail.MovieDetailActivity
 import com.ktz.cinephilia.utils.GridItemNumber
 import com.ktz.cinephilia.utils.isNetworkAvailable
@@ -24,13 +26,16 @@ import com.ktz.cinephilia.utils.snackAction
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import androidx.appcompat.app.AppCompatActivity
+
+
+
 
 @AndroidEntryPoint
 class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
 
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
-
 
     private val viewModel: NowPlayingViewModel by viewModels()
 
@@ -57,6 +62,7 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
         binding.swipeRefresh.isEnabled = false
 
         binding.ivNoItem.visibility = View.VISIBLE
+
 
         return view
     }
@@ -170,4 +176,5 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
             snack.show()
         }
     }
+
 }

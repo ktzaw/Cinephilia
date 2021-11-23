@@ -1,26 +1,25 @@
 package com.ktz.cinephilia.adapters
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.ktz.cinephilia.R
-import com.ktz.cinephilia.data.model.Movies
+import com.ktz.cinephilia.data.model.SearchResponse
 import com.ktz.cinephilia.databinding.ListItemMoviesBinding
 import com.ktz.cinephilia.utils.IMAGE_URL
 
-class MoviesListAdapter(private val movieClicked: (Movies) -> Unit) :
-    PagingDataAdapter<Movies, MoviesListAdapter.ViewHolder>(ListItemCallBack()) {
+class SearchMoviesAdapter(private val movieClicked: (SearchResponse.SearchMovies) -> Unit) :
+    PagingDataAdapter<SearchResponse.SearchMovies, SearchMoviesAdapter.ViewHolder>(ListItemCallBack()) {
 
-    class ListItemCallBack : DiffUtil.ItemCallback<Movies>() {
-        override fun areItemsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+    class ListItemCallBack : DiffUtil.ItemCallback<SearchResponse.SearchMovies>() {
+        override fun areItemsTheSame(oldItem: SearchResponse.SearchMovies, newItem: SearchResponse.SearchMovies): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+        override fun areContentsTheSame(oldItem: SearchResponse.SearchMovies, newItem: SearchResponse.SearchMovies): Boolean {
             return oldItem == newItem
         }
 
@@ -42,7 +41,7 @@ class MoviesListAdapter(private val movieClicked: (Movies) -> Unit) :
     inner class ViewHolder(private val binding: ListItemMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(data: Movies) = with(itemView) {
+        fun bindData(data: SearchResponse.SearchMovies) = with(itemView) {
 
             Glide.with(context)
                 .load(IMAGE_URL + data.posterPath)
@@ -68,4 +67,3 @@ class MoviesListAdapter(private val movieClicked: (Movies) -> Unit) :
     }
 
 }
-

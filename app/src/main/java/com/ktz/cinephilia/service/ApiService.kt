@@ -1,9 +1,6 @@
 package com.ktz.cinephilia.service
 
-import com.ktz.cinephilia.data.model.MovieDetail
-import com.ktz.cinephilia.data.model.MovieResponse
-import com.ktz.cinephilia.data.model.Movies
-import com.ktz.cinephilia.data.model.VideoResponses
+import com.ktz.cinephilia.data.model.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -40,7 +37,8 @@ interface ApiService {
     @GET("search/movie")
     suspend fun searchMovies(
         @Query("api_key") apiKey: String,
-        @Query("query") query: String
-    )
+        @Query("query") query: String,
+        @Query("page")page: Int
+    ):SearchResponse
 
 }

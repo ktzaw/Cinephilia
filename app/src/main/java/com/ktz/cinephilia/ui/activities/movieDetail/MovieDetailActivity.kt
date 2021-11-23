@@ -1,5 +1,6 @@
 package com.ktz.cinephilia.ui.activities.movieDetail
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.room.withTransaction
 import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
 import com.ktz.cinephilia.R
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
@@ -103,6 +105,7 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun bindData(id: Int) {
 
 
@@ -117,7 +120,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 .centerCrop()
                 .into(binding.ivDetailMovieImage)
 
-            binding.tvMovieName.text = movieDetail.title
+            binding.tvMovieNameDetail.text = movieDetail.title
 
             if (movieDetail.overview.isEmpty()) {
                 binding.tvMovieOverview.text = "No Overview available"
@@ -126,6 +129,18 @@ class MovieDetailActivity : AppCompatActivity() {
             }
 
             binding.tvReleaseDate.text = movieDetail.releaseDate
+
+            movieDetail.genres.map {
+
+                Chip(this@MovieDetailActivity).apply {
+
+                    text = it.name
+                    setChipBackgroundColorResource(R.color.colorAccent)
+                    setTextColor(resources.getColor(R.color.white))
+
+                }
+
+            }.forEach { binding.cgGenreList.addView(it) }
 
             setUpFavourite()
 

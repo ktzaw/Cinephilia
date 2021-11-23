@@ -8,6 +8,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.fragment.movies.MoviesFragment">
 
+    <include
+        android:id="@+id/toolbar_view"
+        layout="@layout/layout_toolbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
@@ -32,10 +39,7 @@
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
         android:layout_marginBottom="56dp"/>
-
 
 
 </LinearLayout>

@@ -48,7 +48,6 @@
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,7 +62,7 @@
                 android:src="@drawable/movie_placeholder" />
 
             <TextView
-                android:id="@+id/tv_movie_name"
+                android:id="@+id/tv_movie_name_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -72,6 +71,7 @@
                 android:layout_toEndOf="@id/iv_detail_movie_image"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_bold"
+                android:gravity="center_vertical"
                 android:maxLines="2"
                 android:text="Titanic"
                 android:textAllCaps="false"
@@ -81,8 +81,8 @@
             <TextView
                 android:id="@+id/tv_release_date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_movie_name"
+                android:layout_height="45dp"
+                android:layout_below="@id/tv_movie_name_detail"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
@@ -96,68 +96,80 @@
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_below="@id/iv_detail_movie_image"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 app:cardCornerRadius="16dp"
                 app:cardUseCompatPadding="true">
 
                 <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                     android:id="@+id/youtube_player_view"
                     android:layout_width="wrap_content"
-                    app:showFullScreenButton="false"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    app:showFullScreenButton="false" />
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_genre_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_youtube_player"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                app:cardBackgroundColor="@color/colorAccent"
-                app:cardCornerRadius="16dp"
-                app:cardUseCompatPadding="true">
+                android:clickable="false"
+                android:focusable="false" />
 
-                <LinearLayout
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/cg_genre_list"-->
+            <!--                android:layout_marginLeft="16dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginRight="16dp"-->
+            <!--                app:cardBackgroundColor="@color/colorAccent"-->
+            <!--                app:cardCornerRadius="16dp"-->
+            <!--                app:cardUseCompatPadding="true">-->
+
+            <View
+                android:id="@+id/view_overview"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/cg_genre_list"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#c0c0c0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_overview"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_overview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Overview"
+                    android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/tv_overview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="16dp"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Overview"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <com.libRG.CustomTextView
-                        android:id="@+id/tv_movie_overview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:lineSpacingMultiplier="1.2"
-                        android:textAlignment="inherit"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog."
-                        android:textColor="@color/white"
-                        app:lib_setActionTextColor="@color/purple_500"
-                        app:lib_setActionTextVisible="true"
-                        app:lib_setCollapseHint="See Less"
-                        app:lib_setExpandHint="See More"
-                        app:lib_setExpandableText="true"
-                        app:lib_setTrimLines="5" />
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/tv_movie_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+            <!--            </com.google.android.material.card.MaterialCardView>-->
 
         </RelativeLayout>
 

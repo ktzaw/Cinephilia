@@ -1,4 +1,4 @@
-package com.ktz.cinephilia.service
+package com.ktz.cinephilia.utils
 
 enum class MovieType {
     POPULAR,

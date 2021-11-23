@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/bg_search.xml" value="0.26461538461538464" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/drawer_selected_item.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/drawer_selected_text.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2351851851851852" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/fragment_movies.xml" value="0.1" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/fragment_movies_list.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/fragment_notifications.xml" value="0.12864583333333332" />
+        <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/fragment_search.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/layout_toolbar_custom.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/layout_toolbar_view.xml" value="0.12864583333333332" />
         <entry key="..\:/Users/ROG-Zephyrus/AndroidStudioProjects/Cinephilia/app/src/main/res/layout/list_item_loading.xml" value="0.2526041666666667" />

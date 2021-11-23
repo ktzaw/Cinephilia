@@ -1,30 +1,26 @@
-package com.ktz.cinephilia.repository.upcoming
+package com.ktz.cinephilia.repository.search
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.ktz.cinephilia.data.paged.MoviePagingDataSource
-import com.ktz.cinephilia.data.model.Movies
+import com.ktz.cinephilia.data.model.SearchResponse
+import com.ktz.cinephilia.data.paged.SearchMoviePagingDataSource
 import com.ktz.cinephilia.service.ApiService
-import com.ktz.cinephilia.utils.MovieType
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class UpcomingRepositoryImpl @Inject constructor(
+class SearchMoviesRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-) : UpcomingRepository {
+) : SearchMoviesRepository {
 
-    override fun getUpcomingMovies(): Flow<PagingData<Movies>> {
-
-        val pagingSourceFactory = MoviePagingDataSource(apiService, MovieType.UPCOMING)
+    override fun searchMovies(query: String): Flow<PagingData<SearchResponse.SearchMovies>> {
+        val pagingSourceFactory = SearchMoviePagingDataSource(apiService, query)
 
         return Pager(
             config = PagingConfig(
-
                 pageSize = 30,
                 enablePlaceholders = true,
                 initialLoadSize = 1
-
             ), pagingSourceFactory = { pagingSourceFactory }
         ).flow
 

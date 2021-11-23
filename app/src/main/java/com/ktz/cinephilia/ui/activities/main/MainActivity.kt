@@ -21,8 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var toolbarBinding: LayoutToolbarViewBinding
-    private val toolbar: Toolbar by lazy { toolbarBinding.customToolbar }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,18 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpToolbar()
         setUpNavView()
-
-    }
-
-    private fun setUpToolbar() {
-
-        toolbarBinding = LayoutToolbarViewBinding.inflate(layoutInflater)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.app_name)
-
-        supportActionBar?.setDisplayShowTitleEnabled(true)
 
     }
 

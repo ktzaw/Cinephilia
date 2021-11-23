@@ -10,7 +10,7 @@ class FavouriteMovieRepositoryImpl @Inject constructor(
 
     private val database: MoviesDatabase
 
-) : FavouriteMovieRespository {
+) : FavouriteMovieRepository {
 
 
     override suspend fun getAllMovies(): LiveData<List<MovieDetail>> {

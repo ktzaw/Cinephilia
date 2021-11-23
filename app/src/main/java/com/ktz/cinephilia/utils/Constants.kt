@@ -1,7 +1,6 @@
 package com.ktz.cinephilia.utils
 
 import com.ktz.cinephilia.BuildConfig
-import com.ktz.cinephilia.service.MovieType
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
 

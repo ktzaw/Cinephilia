@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.ktz.cinephilia.data.paged.MoviePagingDataSource
 import com.ktz.cinephilia.data.model.Movies
 import com.ktz.cinephilia.service.ApiService
-import com.ktz.cinephilia.service.MovieType
+import com.ktz.cinephilia.utils.MovieType
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

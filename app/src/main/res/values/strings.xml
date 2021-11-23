@@ -19,4 +19,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="rating_text">%1$s out of 10</string>
+
 </resources>

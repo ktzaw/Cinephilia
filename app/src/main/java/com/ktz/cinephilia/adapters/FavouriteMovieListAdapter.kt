@@ -45,6 +45,12 @@ class FavouriteMovieListAdapter(private val movies: MutableList<MovieDetail>) :
                 .centerCrop()
                 .into(binding.ivItemMovie)
 
+            binding.tvMovieName.text = data.title
+
+            val voteCount = "Rating : ${data.voteAverage} / 10"
+
+            binding.tvRating.text = voteCount
+
 
         }
 

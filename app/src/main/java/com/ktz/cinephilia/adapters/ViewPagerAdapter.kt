@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.ktz.cinephilia.service.MovieType
-import com.ktz.cinephilia.ui.fragment.favourite.FavouriteMoviesFragment
+import com.ktz.cinephilia.utils.MovieType
 import com.ktz.cinephilia.ui.fragment.movies.nowPlaying.NowPlayingFragment
 import com.ktz.cinephilia.ui.fragment.movies.popular.PopularFragment
 import com.ktz.cinephilia.ui.fragment.movies.upcoming.UpcomingFragment
-import com.ktz.cinephilia.utils.isNetworkAvailable
 
 class ViewPagerAdapter(
     fragmentManager: FragmentManager,
