@@ -52,19 +52,23 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        setUpAdapter()
+        binding.swipeRefresh.isEnabled = true
+
+        binding.swipeRefresh.setOnRefreshListener { submitData() }
+
+        binding.ivNoItem.visibility = View.VISIBLE
+
+        return view
+    }
+
+    private fun setUpAdapter() {
         val noOfColumns =
             GridItemNumber().calculateNoOfColumns(requireActivity().applicationContext, 120f)
         val gridLayoutManager = GridLayoutManager(context, noOfColumns)
 
         binding.rvMovieList.adapter = mAdapter
         binding.rvMovieList.layoutManager = gridLayoutManager
-
-        binding.swipeRefresh.isRefreshing = true
-        binding.swipeRefresh.isEnabled = false
-
-        binding.ivNoItem.visibility = View.VISIBLE
-
-        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

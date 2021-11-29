@@ -53,7 +53,6 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
         val view = binding.root
 
         setUpAdapter()
-        binding.swipeRefresh.isEnabled = false
 
         binding.ivNoItem.visibility = View.VISIBLE
 
@@ -65,6 +64,10 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
 
         setUpLoadStateAdapter()
         submitData()
+
+        binding.swipeRefresh.isEnabled = true
+
+        binding.swipeRefresh.setOnRefreshListener { submitData() }
 
     }
 

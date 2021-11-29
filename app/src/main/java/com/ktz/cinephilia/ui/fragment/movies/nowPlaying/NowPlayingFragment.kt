@@ -59,8 +59,6 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
 
         setUpAdapters()
 
-        binding.swipeRefresh.isEnabled = false
-
         binding.ivNoItem.visibility = View.VISIBLE
 
 
@@ -72,6 +70,9 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
 
         setUpWithLoadStateAdapter()
         submitData()
+        binding.swipeRefresh.isEnabled = true
+
+        binding.swipeRefresh.setOnRefreshListener { submitData() }
 
     }
 
