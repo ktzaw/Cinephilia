@@ -9,6 +9,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.room.withTransaction
 import com.bumptech.glide.Glide
@@ -105,9 +106,7 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("ResourceAsColor")
     private fun bindData(id: Int) {
-
 
         lifecycleScope.launch {
 
@@ -136,7 +135,9 @@ class MovieDetailActivity : AppCompatActivity() {
 
                     text = it.name
                     setChipBackgroundColorResource(R.color.colorAccent)
-                    setTextColor(resources.getColor(R.color.white))
+                    setTextColor(ContextCompat.getColor(context, R.color.white))
+                    isCheckable = false
+                    isClickable = false
 
                 }
 

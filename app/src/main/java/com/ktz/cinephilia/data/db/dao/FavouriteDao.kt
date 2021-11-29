@@ -14,7 +14,7 @@ interface FavouriteDao {
     fun getAllMovies(): LiveData<List<MovieDetail>>
 
     @Query("SELECT * FROM favourite_table WHERE id=:movieId")
-    fun getSpecificMovie(movieId: String): MovieDetail
+    fun getSpecificMovie(movieId: Int): MovieDetail
 
     @Query("SELECT EXISTS(SELECT * FROM favourite_table WHERE id = :id)")
     fun isFavourite(id: Int): Boolean

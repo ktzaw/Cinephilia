@@ -8,20 +8,26 @@
     <application
         android:name=".CinephiliaApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_new"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cinephilia">
         <activity
             android:name=".ui.activities.movieDetail.MovieDetailActivity"
             android:exported="true"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.Cinephilia.NoActionBar" />
+
+        <activity android:name=".ui.fragment.favourite.FavouriteMovieDetailActivity"
+            android:theme="@style/Theme.Cinephilia.NoActionBar"
+            android:launchMode="singleTop"/>
+
         <activity
             android:name=".ui.activities.main.MainActivity"
             android:exported="true"
-            android:screenOrientation="fullUser"
             android:label="@string/app_name"
+            android:screenOrientation="fullUser"
             android:theme="@style/Theme.Cinephilia.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

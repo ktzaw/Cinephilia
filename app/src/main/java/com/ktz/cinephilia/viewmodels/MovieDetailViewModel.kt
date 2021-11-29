@@ -9,6 +9,7 @@ import com.ktz.cinephilia.data.model.VideoResponses
 import com.ktz.cinephilia.repository.movieDetail.MovieDetailRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,6 +37,8 @@ class MovieDetailViewModel @Inject constructor(
         database.withTransaction {
             isFavourite = database.favouriteDao.isFavourite(movieId)
         }
+
+        Timber.d("$isFavourite")
 
         return isFavourite
     }

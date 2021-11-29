@@ -4,10 +4,12 @@ import android.app.Activity
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,13 +18,13 @@ import com.ktz.cinephilia.R
 import com.ktz.cinephilia.databinding.ActivityMainBinding
 import com.ktz.cinephilia.databinding.LayoutToolbarViewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,10 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         setUpNavView()
 
+        Timber.d("Main Activity")
+
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun setUpNavView() {
+    private fun setUpNavView() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -47,9 +50,9 @@ class MainActivity : AppCompatActivity() {
 
 
         if (isDarkTheme(activity = this)) {
-            window.navigationBarColor = getColor(R.color.statusBarColorNight)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.statusBarColorNight)
         } else {
-            window.navigationBarColor = getColor(R.color.statusBarColor)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.statusBarColor)
         }
     }
 

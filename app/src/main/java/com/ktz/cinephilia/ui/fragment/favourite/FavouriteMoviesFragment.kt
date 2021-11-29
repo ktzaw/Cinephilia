@@ -1,5 +1,6 @@
 package com.ktz.cinephilia.ui.fragment.favourite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.ktz.cinephilia.adapters.FavouriteMovieListAdapter
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.databinding.FragmentFavouriteBinding
 import com.ktz.cinephilia.databinding.LayoutToolbarViewBinding
+import com.ktz.cinephilia.ui.activities.movieDetail.MovieDetailActivity
 import com.ktz.cinephilia.ui.fragment.movies.nowPlaying.NowPlayingFragment
 import com.ktz.cinephilia.utils.GridItemNumber
 import com.ktz.cinephilia.viewmodels.FavouriteMoviesViewModel
@@ -36,7 +38,9 @@ class FavouriteMoviesFragment : Fragment(R.layout.fragment_favourite) {
 
     private val viewmodel: FavouriteMoviesViewModel by viewModels()
 
-    private val mAdapter = FavouriteMovieListAdapter(mutableListOf())
+    private val mAdapter = FavouriteMovieListAdapter(mutableListOf()) {
+        intentToMovieDetail(it.id)
+    }
 
     fun newInstance(): FavouriteMoviesFragment {
         return FavouriteMoviesFragment()
@@ -66,7 +70,7 @@ class FavouriteMoviesFragment : Fragment(R.layout.fragment_favourite) {
         binding.rvFavouriteMoviesList.adapter = mAdapter
         binding.rvFavouriteMoviesList.layoutManager = gridLayoutManager
 
-        viewmodel.getFavouriteMovies().observe(this, Observer {
+        viewmodel.getFavouriteMovies().observe(viewLifecycleOwner, Observer {
 
             it.let {
                 mAdapter.setMovies(it)
@@ -89,6 +93,16 @@ class FavouriteMoviesFragment : Fragment(R.layout.fragment_favourite) {
         mToolbar?.title = getString(R.string.app_name)
 
         mToolbar?.setDisplayShowTitleEnabled(true)
+
+    }
+
+    private fun intentToMovieDetail(movieId: Int) {
+
+        val intent = Intent(this.context, FavouriteMovieDetailActivity::class.java).apply {
+            putExtra("MOVIE_ID", movieId)
+        }
+
+        startActivity(intent)
 
     }
 

@@ -58,7 +58,7 @@ class MoviesListAdapter(private val movieClicked: (Movies) -> Unit) :
             binding.tvRating.text = voteCount
 
 
-            itemView.setOnClickListener {
+            this.setOnClickListener {
                 movieClicked.invoke(data)
             }
 
