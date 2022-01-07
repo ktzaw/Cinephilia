@@ -15,7 +15,9 @@ import com.ktz.cinephilia.utils.toastShort
 import com.ktz.cinephilia.viewmodels.FavouriteMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.app.NavUtils
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ktz.cinephilia.R
+import com.ktz.cinephilia.adapters.FavouriteMovieReviewsListAdapter
 
 
 @AndroidEntryPoint
@@ -102,6 +104,17 @@ class FavouriteMovieDetailActivity : AppCompatActivity() {
 
                 }
             }
+
+        })
+
+        viewModel.getFavouriteMovieReview().observe(this, Observer { reviewList ->
+
+            val mAdapter = FavouriteMovieReviewsListAdapter(mutableListOf())
+            val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            binding.rvReviewList.adapter = mAdapter
+            binding.rvReviewList.layoutManager = layoutManager
+
+            mAdapter.setMovies(reviewList)
 
         })
 

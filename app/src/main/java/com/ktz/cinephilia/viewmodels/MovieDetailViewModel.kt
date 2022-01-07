@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.room.withTransaction
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
+import com.ktz.cinephilia.data.model.ReviewResponses
+import com.ktz.cinephilia.data.model.ReviewResult
 import com.ktz.cinephilia.data.model.VideoResponses
 import com.ktz.cinephilia.repository.movieDetail.MovieDetailRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +29,24 @@ class MovieDetailViewModel @Inject constructor(
     suspend fun loadMovieTrailer(movieId: Int): VideoResponses {
 
         return repository.getVideo(movieId)
+
+    }
+
+    suspend fun loadMovieReviews(movieId: Int): ReviewResponses {
+
+        return repository.getReviews(movieId)
+
+    }
+
+    suspend fun addReviewToFavourite(movieReview: ReviewResult) {
+
+        return repository.addReviewToFavourite(movieReview)
+
+    }
+
+    suspend fun removeReviewFromFavourite(movieId: Int) {
+
+        return repository.removeFromFavourite(movieId)
 
     }
 

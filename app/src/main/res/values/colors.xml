@@ -14,9 +14,9 @@
 
     <color name="statusBarColor">#EAEAEA</color>
 
-    <color name="colorNightPrimary">#283546</color>
-    <color name="colorNightPrimaryVariant">#000e1f</color>
-    <color name="statusBarColorNight">#1D2733</color>
+    <color name="colorNightPrimary">#121212</color>
+    <color name="colorNightPrimaryVariant">#000000</color>
+    <color name="statusBarColorNight">#000000</color>
 
 <!--    <color name="colorAccent">#4FABF7</color>-->
 <!--    <color name="colorPrimary">#1d2027</color>-->

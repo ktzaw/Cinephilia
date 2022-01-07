@@ -29,9 +29,10 @@
 
             <CheckBox
                 android:id="@+id/cb_favourite"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="right"
+                android:padding="6dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/like_animation"
@@ -168,6 +169,33 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
                     android:lineSpacingMultiplier="1.2" />
+
+                <View
+                    android:id="@+id/view_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cg_genre_list"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="#c0c0c0" />
+
+                <TextView
+                    android:id="@+id/tv_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Reviews"
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rv_review_list"/>
+
             </LinearLayout>
             <!--            </com.google.android.material.card.MaterialCardView>-->
 

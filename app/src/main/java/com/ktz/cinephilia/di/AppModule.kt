@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.db.dao.FavouriteDao
+import com.ktz.cinephilia.data.db.dao.ReviewsDao
 import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.utils.BASE_URL
 import dagger.Module
@@ -50,6 +51,12 @@ class AppModule {
     @Singleton
     fun provideFavouriteDao(db: MoviesDatabase): FavouriteDao {
         return db.favouriteDao
+    }
+
+    @Provides
+    @Singleton
+    fun provideReviewsDao(db: MoviesDatabase): ReviewsDao {
+        return db.reviewDao
     }
 
 

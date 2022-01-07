@@ -56,7 +56,6 @@ class FavouriteMovieListAdapter(
             binding.tvRating.text = voteCount
 
             this.setOnClickListener {
-                it.isEnabled = false
                 movieClicked.invoke(data)
             }
 

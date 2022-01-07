@@ -16,6 +16,8 @@
         android:layout_marginEnd="0dp"
         android:background="?colorPrimary"
         app:itemIconSize="26dp"
+        android:elevation="16dp"
+        android:paddingTop="16dp"
         app:itemIconTint="@color/navigation_icon_text"
         app:itemRippleColor="@android:color/transparent"
         app:menu="@menu/bottom_nav_menu" />

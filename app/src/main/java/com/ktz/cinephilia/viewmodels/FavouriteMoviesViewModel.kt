@@ -4,6 +4,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ktz.cinephilia.data.model.MovieDetail
+import com.ktz.cinephilia.data.model.ReviewResult
 import com.ktz.cinephilia.repository.favourite.FavouriteMovieRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -34,10 +35,29 @@ class FavouriteMoviesViewModel @Inject constructor(
 
     }
 
+    fun getFavouriteMovieReview():MediatorLiveData<List<ReviewResult>>{
+
+        val movieReviewList = MediatorLiveData<List<ReviewResult>>()
+
+        viewModelScope.launch {
+
+            movieReviewList.addSource(repository.getAllReviews()){
+
+                movieReviewList.postValue(it)
+
+            }
+
+        }
+        return movieReviewList
+
+    }
+
+
      fun removeFromFavourite(movieId: Int) {
 
         viewModelScope.launch {
             repository.deleteMovie(movieId)
+            repository.deleteReview(movieId)
         }
     }
 

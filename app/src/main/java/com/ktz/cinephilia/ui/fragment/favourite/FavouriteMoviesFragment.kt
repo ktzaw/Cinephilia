@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ktz.cinephilia.R
 import com.ktz.cinephilia.adapters.FavouriteMovieListAdapter
+import com.ktz.cinephilia.adapters.FavouriteMovieReviewsListAdapter
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.databinding.FragmentFavouriteBinding
 import com.ktz.cinephilia.databinding.LayoutToolbarViewBinding
@@ -41,6 +42,8 @@ class FavouriteMoviesFragment : Fragment(R.layout.fragment_favourite) {
     private val mAdapter = FavouriteMovieListAdapter(mutableListOf()) {
         intentToMovieDetail(it.id)
     }
+
+    private val favouriteAdapter = FavouriteMovieReviewsListAdapter(mutableListOf())
 
     fun newInstance(): FavouriteMoviesFragment {
         return FavouriteMoviesFragment()

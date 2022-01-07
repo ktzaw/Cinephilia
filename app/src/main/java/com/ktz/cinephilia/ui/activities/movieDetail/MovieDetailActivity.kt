@@ -1,29 +1,27 @@
 package com.ktz.cinephilia.ui.activities.movieDetail
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.room.withTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.ktz.cinephilia.R
+import com.ktz.cinephilia.adapters.MovieReviewListAdapter
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
+import com.ktz.cinephilia.data.model.ReviewResponses
 import com.ktz.cinephilia.databinding.ActivityMovieDetailBinding
 import com.ktz.cinephilia.utils.IMAGE_URL
-import com.ktz.cinephilia.utils.toastShort
 import com.ktz.cinephilia.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -39,7 +37,11 @@ class MovieDetailActivity : AppCompatActivity() {
 
     lateinit var movieDetail: MovieDetail
 
+    lateinit var movieReviews: ReviewResponses
+
     lateinit var database: MoviesDatabase
+
+    private var mAdapter = MovieReviewListAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +98,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             if (isChecked) {
 
-                saveMovie(movieDetail)
+                saveMovie(movieDetail,movieReviews)
 
             } else {
 
@@ -147,13 +149,16 @@ class MovieDetailActivity : AppCompatActivity() {
 
             bindTrailer(id)
 
+            bindMovieReviews(id)
+
         }
     }
 
-    private fun saveMovie(movieDetail: MovieDetail) {
+    private fun saveMovie(movieDetail: MovieDetail,movieReview:ReviewResponses) {
 
         lifecycleScope.launch {
             viewModel.addToFavourite(movieDetail)
+            viewModel.addReviewToFavourite(movieReview.results[0])
         }
     }
 
@@ -161,6 +166,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             viewModel.removeFromFavourite(id)
+            viewModel.removeReviewFromFavourite(id)
         }
 
     }
@@ -192,6 +198,18 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.youtubePlayerView.visibility = View.GONE
 
         }
+    }
+
+    private suspend fun bindMovieReviews(id: Int) {
+
+        movieReviews = viewModel.loadMovieReviews(id)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        binding.rvReviewList.adapter = mAdapter
+        binding.rvReviewList.layoutManager = layoutManager
+
+        mAdapter.setMovies(listOf(movieReviews))
+
     }
 
     private fun handlePlayer(youtubeKey: String) {
