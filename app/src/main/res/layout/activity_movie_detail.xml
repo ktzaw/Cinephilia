@@ -32,12 +32,12 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="right"
-                android:padding="6dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/like_animation"
                 android:button="@null"
                 android:checked="false"
+                android:padding="6dp"
                 android:stateListAnimator="@animator/scale" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -121,18 +121,6 @@
                 android:clickable="false"
                 android:focusable="false" />
 
-
-            <!--            <com.google.android.material.card.MaterialCardView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@id/cg_genre_list"-->
-            <!--                android:layout_marginLeft="16dp"-->
-            <!--                android:layout_marginTop="8dp"-->
-            <!--                android:layout_marginRight="16dp"-->
-            <!--                app:cardBackgroundColor="@color/colorAccent"-->
-            <!--                app:cardCornerRadius="16dp"-->
-            <!--                app:cardUseCompatPadding="true">-->
-
             <View
                 android:id="@+id/view_overview"
                 android:layout_width="match_parent"
@@ -192,12 +180,11 @@
                     android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_review_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/rv_review_list"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
-            <!--            </com.google.android.material.card.MaterialCardView>-->
 
         </RelativeLayout>
 

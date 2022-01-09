@@ -2,9 +2,8 @@ package com.ktz.cinephilia.repository.movieDetail
 
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.data.model.ReviewResponses
-import com.ktz.cinephilia.data.model.ReviewResult
+import com.ktz.cinephilia.data.model.Reviews
 import com.ktz.cinephilia.data.model.VideoResponses
-import kotlinx.coroutines.flow.Flow
 
 interface MovieDetailRepository {
 
@@ -13,7 +12,7 @@ interface MovieDetailRepository {
     suspend fun addToFavourite(movieDetail: MovieDetail)
     suspend fun removeFromFavourite(movieId: Int)
 
-    suspend fun addReviewToFavourite(movieReview:ReviewResult)
+    suspend fun addReviewToFavourite(movieReview:Reviews)
     suspend fun getReviews(movieId: Int):ReviewResponses
 
 

@@ -98,7 +98,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             if (isChecked) {
 
-                saveMovie(movieDetail,movieReviews)
+                saveMovie(movieDetail, movieReviews)
 
             } else {
 
@@ -145,20 +145,27 @@ class MovieDetailActivity : AppCompatActivity() {
 
             }.forEach { binding.cgGenreList.addView(it) }
 
+
+            bindMovieReviews(id)
+
             setUpFavourite()
 
             bindTrailer(id)
 
-            bindMovieReviews(id)
 
         }
     }
 
-    private fun saveMovie(movieDetail: MovieDetail,movieReview:ReviewResponses) {
+    private fun saveMovie(movieDetail: MovieDetail, movieReview: ReviewResponses) {
 
         lifecycleScope.launch {
             viewModel.addToFavourite(movieDetail)
-            viewModel.addReviewToFavourite(movieReview.results[0])
+            if (movieReview.results.isNotEmpty()) {
+
+                movieReview.results[0].movieId = movieDetail.id
+                viewModel.addReviewToFavourite(movieReview.results[0])
+            }
+
         }
     }
 
@@ -207,7 +214,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
         binding.rvReviewList.adapter = mAdapter
         binding.rvReviewList.layoutManager = layoutManager
-
         mAdapter.setMovies(listOf(movieReviews))
 
     }

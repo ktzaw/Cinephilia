@@ -27,8 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatActivity
-
-
+import androidx.core.view.isVisible
 
 
 @AndroidEntryPoint
@@ -58,22 +57,15 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
         val view = binding.root
 
         setUpAdapters()
-
-        binding.ivNoItem.visibility = View.VISIBLE
-
-
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         setUpWithLoadStateAdapter()
+
         submitData()
+
         binding.swipeRefresh.isEnabled = true
 
         binding.swipeRefresh.setOnRefreshListener { submitData() }
 
+        return view
     }
 
     private fun setUpAdapters() {
@@ -137,12 +129,9 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
 
     private fun submitData() {
 
-        binding.ivNoItem.visibility = View.VISIBLE
-        binding.swipeRefresh.isRefreshing = true
-
         if (requireContext().isNetworkAvailable()) {
 
-            binding.ivNoItem.visibility = View.GONE
+            binding.tvError.visibility = View.GONE
             binding.rvMovieList.visibility = View.VISIBLE
 
             lifecycleScope.launch {
@@ -152,29 +141,17 @@ class NowPlayingFragment : Fragment(R.layout.fragment_movies_list) {
                 }
             }
 
-            binding.swipeRefresh.isRefreshing = mAdapter.itemCount == 0
-
         } else {
 
+            binding.tvError.visibility = View.VISIBLE
+            binding.swipeRefresh.setOnRefreshListener { mAdapter.retry() }
 
-            binding.swipeRefresh.isRefreshing = false
             lifecycleScope.launch {
                 viewModel.loadNowPlayingMovies().collectLatest {
                     mAdapter.submitData(it)
 
                 }
             }
-
-            val snack = Snackbar.make(
-                requireContext(),
-                requireView(),
-                "Check your network and try again!",
-                Snackbar.LENGTH_INDEFINITE
-            )
-            snack.setAction("Retry", View.OnClickListener {
-                submitData()
-            })
-            snack.show()
         }
     }
 

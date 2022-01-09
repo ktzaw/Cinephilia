@@ -2,6 +2,7 @@ package com.ktz.cinephilia.ui.fragment.favourite
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -107,15 +108,27 @@ class FavouriteMovieDetailActivity : AppCompatActivity() {
 
         })
 
-        viewModel.getFavouriteMovieReview().observe(this, Observer { reviewList ->
+        viewModel.getFavouriteMovieReview(movieId).observe(this, Observer { reviewList ->
 
             val mAdapter = FavouriteMovieReviewsListAdapter(mutableListOf())
             val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             binding.rvReviewList.adapter = mAdapter
             binding.rvReviewList.layoutManager = layoutManager
 
-            mAdapter.setMovies(reviewList)
+            reviewList.map { reviewResult ->
 
+                if (mAdapter.itemCount == 0){
+
+                    binding.rvReviewList.visibility = View.GONE
+                    binding.tvNoReview.visibility = View.VISIBLE
+
+                }
+
+                if (reviewResult.movieId == movieId) {
+                    mAdapter.setMovies(reviewList)
+                }
+
+            }
         })
 
     }

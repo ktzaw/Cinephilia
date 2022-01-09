@@ -3,16 +3,15 @@ package com.ktz.cinephilia.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ktz.cinephilia.data.model.ReviewResponses
-import com.ktz.cinephilia.data.model.ReviewResult
+import com.ktz.cinephilia.data.model.Reviews
 import com.ktz.cinephilia.databinding.ListItemReviewsBinding
 
 class FavouriteMovieReviewsListAdapter(
 
-    private val movieReviews: MutableList<ReviewResult>
+    private val movieReviews: MutableList<Reviews>
 ) : RecyclerView.Adapter<FavouriteMovieReviewsListAdapter.FavouriteReviewViewHolder>() {
 
-    fun setMovies(reviewList: List<ReviewResult>) {
+    fun setMovies(reviewList: List<Reviews>) {
         this.movieReviews.clear()
         this.movieReviews.addAll(reviewList)
         notifyDataSetChanged()
@@ -35,13 +34,17 @@ class FavouriteMovieReviewsListAdapter(
     inner class FavouriteReviewViewHolder(val binding: ListItemReviewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(data: ReviewResult) = with(itemView) {
+        fun bindData(data: Reviews) {
 
-            binding.tvMovieReview.text = data.content
+            if (data == null) {
+                binding.tvMovieReview.text = "No review available"
+            } else {
 
-            val author = "- ${data.author} -"
-            binding.tvMovieReviewAuthor.text = author
+                binding.tvMovieReview.text = data.content
 
+                val author = "- ${data.author} -"
+                binding.tvMovieReviewAuthor.text = author
+            }
         }
 
     }

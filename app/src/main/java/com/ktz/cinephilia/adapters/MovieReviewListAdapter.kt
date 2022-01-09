@@ -36,11 +36,17 @@ class MovieReviewListAdapter(
 
         fun bindData(data: ReviewResponses) = with(itemView) {
 
+            if (data.results.isEmpty()){
+
+                binding.tvMovieReview.text = "No reviews available"
+
+            }else{
+
             binding.tvMovieReview.text = data.results[0].content
 
             val author = "- ${data.results[0].author} -"
             binding.tvMovieReviewAuthor.text = author
-        }
+        }}
     }
 
 }

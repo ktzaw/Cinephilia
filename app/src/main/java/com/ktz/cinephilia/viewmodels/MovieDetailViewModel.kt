@@ -1,16 +1,14 @@
 package com.ktz.cinephilia.viewmodels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.room.withTransaction
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.data.model.ReviewResponses
-import com.ktz.cinephilia.data.model.ReviewResult
+import com.ktz.cinephilia.data.model.Reviews
 import com.ktz.cinephilia.data.model.VideoResponses
 import com.ktz.cinephilia.repository.movieDetail.MovieDetailRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -38,7 +36,7 @@ class MovieDetailViewModel @Inject constructor(
 
     }
 
-    suspend fun addReviewToFavourite(movieReview: ReviewResult) {
+    suspend fun addReviewToFavourite(movieReview: Reviews) {
 
         return repository.addReviewToFavourite(movieReview)
 

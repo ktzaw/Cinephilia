@@ -4,7 +4,7 @@ import androidx.room.withTransaction
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
 import com.ktz.cinephilia.data.model.ReviewResponses
-import com.ktz.cinephilia.data.model.ReviewResult
+import com.ktz.cinephilia.data.model.Reviews
 import com.ktz.cinephilia.data.model.VideoResponses
 import com.ktz.cinephilia.service.ApiService
 import com.ktz.cinephilia.utils.API_KEY
@@ -41,7 +41,7 @@ class MovieDetailRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addReviewToFavourite(movieReview: ReviewResult) {
+    override suspend fun addReviewToFavourite(movieReview: Reviews) {
         database.withTransaction {
             database.reviewDao.insertReviews(movieReview)
         }

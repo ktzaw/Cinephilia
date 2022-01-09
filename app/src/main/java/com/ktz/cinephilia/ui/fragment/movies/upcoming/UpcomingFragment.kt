@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -52,12 +53,15 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
+        setUpLoadStateAdapter()
         setUpAdapter()
+
+        submitData()
+
         binding.swipeRefresh.isEnabled = true
 
-        binding.swipeRefresh.setOnRefreshListener { submitData() }
-
-        binding.ivNoItem.visibility = View.VISIBLE
+        binding.swipeRefresh.setOnRefreshListener { mAdapter.retry() }
 
         return view
     }
@@ -69,14 +73,6 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
 
         binding.rvMovieList.adapter = mAdapter
         binding.rvMovieList.layoutManager = gridLayoutManager
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setUpLoadStateAdapter()
-        submitData()
-
     }
 
     private fun setUpLoadStateAdapter() {
@@ -97,11 +93,11 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
                         ?.takeIf { it is LoadState.Error && mAdapter.itemCount > 0 }
                         ?: loadState.prepend
 
-                    val isListEmpty =
-                        loadState.refresh is LoadState.NotLoading && mAdapter.itemCount == 0
 
-                    binding.swipeRefresh.isRefreshing =
-                        loadState.mediator?.refresh is LoadState.Loading
+                    val isListEmpty =
+                        loadState.refresh is LoadState.NotLoading || mAdapter.itemCount == 0
+
+                    binding.swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
 
                 }
             } catch (e: Exception) {
@@ -127,12 +123,9 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
 
     private fun submitData() {
 
-        binding.ivNoItem.visibility = View.VISIBLE
-        binding.swipeRefresh.isRefreshing = true
-
         if (requireContext().isNetworkAvailable()) {
 
-            binding.ivNoItem.visibility = View.GONE
+            binding.tvError.visibility = View.GONE
             binding.rvMovieList.visibility = View.VISIBLE
 
             lifecycleScope.launch {
@@ -142,29 +135,19 @@ class UpcomingFragment : Fragment(R.layout.fragment_movies_list) {
                 }
             }
 
-            binding.swipeRefresh.isRefreshing = mAdapter.itemCount == 0
 
         } else {
 
 
-            binding.swipeRefresh.isRefreshing = false
+            binding.tvError.visibility = View.VISIBLE
+            binding.swipeRefresh.setOnRefreshListener { mAdapter.retry() }
+
             lifecycleScope.launch {
                 viewModel.loadUpcomingMovies().collectLatest {
                     mAdapter.submitData(it)
 
                 }
             }
-
-            val snack = Snackbar.make(
-                requireContext(),
-                requireView(),
-                "Check your network and try again!",
-                Snackbar.LENGTH_INDEFINITE
-            )
-            snack.setAction("Retry", View.OnClickListener {
-                submitData()
-            })
-            snack.show()
         }
     }
 

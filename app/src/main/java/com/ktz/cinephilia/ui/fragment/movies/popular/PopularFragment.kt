@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -53,22 +54,15 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
         val view = binding.root
 
         setUpAdapter()
-
-        binding.ivNoItem.visibility = View.VISIBLE
-
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         setUpLoadStateAdapter()
+
         submitData()
 
         binding.swipeRefresh.isEnabled = true
 
-        binding.swipeRefresh.setOnRefreshListener { submitData() }
+        binding.swipeRefresh.setOnRefreshListener { mAdapter.retry() }
 
+        return view
     }
 
     private fun setUpLoadStateAdapter() {
@@ -90,12 +84,11 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
                         ?: loadState.prepend
 
                     val isListEmpty =
-                        loadState.refresh is LoadState.NotLoading && mAdapter.itemCount == 0
+                        loadState.refresh is LoadState.NotLoading || mAdapter.itemCount == 0
 
-                    binding.swipeRefresh.isRefreshing =
-                        loadState.mediator?.refresh is LoadState.Loading
+                    binding.swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
 
-                }
+                 }
             } catch (e: Exception) {
             }
 
@@ -128,12 +121,9 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
 
     private fun submitData() {
 
-        binding.ivNoItem.visibility = View.VISIBLE
-        binding.swipeRefresh.isRefreshing = true
-
         if (requireContext().isNetworkAvailable()) {
 
-            binding.ivNoItem.visibility = View.GONE
+            binding.tvError.visibility = View.GONE
             binding.rvMovieList.visibility = View.VISIBLE
 
             lifecycleScope.launch {
@@ -143,29 +133,17 @@ class PopularFragment : Fragment(R.layout.fragment_movies_list) {
                 }
             }
 
-            binding.swipeRefresh.isRefreshing = mAdapter.itemCount == 0
-
         } else {
 
+            binding.tvError.visibility = View.VISIBLE
+            binding.swipeRefresh.setOnRefreshListener { mAdapter.retry() }
 
-            binding.swipeRefresh.isRefreshing = false
             lifecycleScope.launch {
                 viewModel.loadPopularMovies().collectLatest {
                     mAdapter.submitData(it)
 
                 }
             }
-
-            val snack = Snackbar.make(
-                requireContext(),
-                requireView(),
-                "Check your network and try again!",
-                Snackbar.LENGTH_INDEFINITE
-            )
-            snack.setAction("Retry", View.OnClickListener {
-                submitData()
-            })
-            snack.show()
         }
     }
 

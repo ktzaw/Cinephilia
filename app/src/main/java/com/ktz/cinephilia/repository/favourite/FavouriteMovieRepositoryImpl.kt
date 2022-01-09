@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.withTransaction
 import com.ktz.cinephilia.data.db.MoviesDatabase
 import com.ktz.cinephilia.data.model.MovieDetail
-import com.ktz.cinephilia.data.model.ReviewResponses
-import com.ktz.cinephilia.data.model.ReviewResult
+import com.ktz.cinephilia.data.model.Reviews
 import javax.inject.Inject
 
 class FavouriteMovieRepositoryImpl @Inject constructor(
@@ -27,8 +26,8 @@ class FavouriteMovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllReviews(): LiveData<List<ReviewResult>> {
-        return database.withTransaction { database.reviewDao.getAllReviews() }
+    override suspend fun getReview(movieId: Int): LiveData<List<Reviews>> {
+        return database.withTransaction { database.reviewDao.getReview(movieId) }
     }
 
     override suspend fun deleteReview(movieId: Int) {

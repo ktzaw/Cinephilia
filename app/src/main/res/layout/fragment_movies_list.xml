@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_no_item"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_error"
+            android:text="No results. Please pull to refresh or retry."
             android:layout_gravity="center"
-            android:backgroundTint="#65676c"
-            android:src="@drawable/no_item"/>
+            android:gravity="center"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
