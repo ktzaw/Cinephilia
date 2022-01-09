@@ -3,10 +3,6 @@
 <h3>Movie Review App</h3>
 
 This app load Movies from TMDb. Users can search movies and add to favourite which will store them in room database.
-This application is built using [The Movie DB](https://developers.themoviedb.org/3).
-
-
-=======
 This application is built using datas from [The Movie DB](https://developers.themoviedb.org/3).
 All logos and icons credit goes to [flaticon](https://www.flaticon.com/).
 
