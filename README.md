@@ -17,3 +17,4 @@ All logos and icons credit goes to [flaticon](https://www.flaticon.com/).
 - [Hilt](https://dagger.dev/hilt/)
 - [Room](https://developer.android.com/topic/libraries/architecture/room)
 
+You can download the apk [here](https://drive.google.com/file/d/1IihIOrn4bqZo1KusLa0EYw8hFNGXFCI4/view?usp=sharing)
