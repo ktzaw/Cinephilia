@@ -3,10 +3,7 @@ import org.jetbrains.kotlin.konan.properties.Properties
 plugins {
     id(Libraries.Plugins.androidApplication)
     id(Libraries.Plugins.kotlinAndroid)
-    id(Libraries.Plugins.kotlinKapt)
-    id(Libraries.Plugins.googleServices)
-    id(Libraries.Plugins.daggerHilt)
-    id(Libraries.Plugins.crashlytics)
+    id(Libraries.Plugins.navigationSafeArgs)
 }
 
 android {
@@ -24,7 +21,7 @@ android {
         val properties: Properties = Properties()
         properties.load(project.rootProject.file("key.properties").inputStream())
 
-        buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
+        buildConfigField("String", "API_KEY", properties.getProperty("apiKey"))
     }
 
     buildTypes {
@@ -34,12 +31,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-    }
-
-    externalNativeBuild {
-        cmake {
-            path = File("$projectDir/CMakeLists.txt")
         }
     }
 
@@ -54,84 +45,33 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
 
-    implementation(Libraries.Core.appCompact)
+    // Android Core
     implementation(Libraries.Core.androidCore)
-    implementation(Libraries.Core.lifeCycleViewModelKtx)
-    implementation(Libraries.Core.lifecycleRuntimeKtx)
-
-    // Kotlin
-    implementation(Libraries.Core.coroutinesCore)
-    implementation(Libraries.Core.coroutinesAndroid)
-
-    // UI
-    implementation(Libraries.UI.activityKtx)
-    implementation(Libraries.UI.fragmentKtx)
-    implementation(Libraries.UI.constraintLayout)
-    implementation(Libraries.UI.cardView)
-    implementation(Libraries.UI.recyclerView)
-    implementation(Libraries.UI.material)
-    implementation(Libraries.UI.youtubePlayerView)
-
-    implementation(Libraries.UI.glide)
-    implementation(Libraries.UI.circleImageView)
-    implementation(Libraries.UI.coil)
-
-    // Navigation
-    implementation(Libraries.Navigation.dynamicFeaturesNav)
-    implementation(Libraries.Navigation.navigationFragmentKtx)
-    implementation(Libraries.Navigation.navigationUiKtx)
-
-    // Firebase
-    implementation(platform(Libraries.Firebase.bom))
-    implementation(Libraries.Firebase.firebaseAnalytics)
-    implementation(Libraries.Firebase.firebaseAuthKtx)
-    implementation(Libraries.Firebase.firebaseCrashlyticsKtx)
-    implementation(Libraries.Firebase.firebaseFirestoreKtx)
-    implementation(Libraries.Firebase.firebaseStorageKtx)
-    implementation(Libraries.Firebase.firebaseCoroutineSupport)
-
-    // Dependency Injection
-    implementation(Libraries.Dagger.hiltAndroid)
-    implementation(Libraries.Dagger.hiltWorker)
-    kapt(Libraries.Dagger.androidxHiltCompiler)
-    kapt(Libraries.Dagger.daggerHiltCompiler)
-
-    // Data
-    implementation(Libraries.Core.roomRuntime)
-    implementation(Libraries.Core.roomKtx)
-    kapt(Libraries.Compilers.roomCompiler)
-
-    // Logs
+    implementation(Libraries.Core.appCompact)
     implementation(Libraries.Core.timber)
 
-    // Data
-    implementation(Libraries.Core.roomRuntime)
-    implementation(Libraries.Core.roomKtx)
-    kapt(Libraries.Compilers.roomCompiler)
+    // UI
+    implementation(Libraries.UI.material)
+    implementation(Libraries.UI.constraintLayout)
+    implementation(Libraries.UI.animatedBottomBar)
+    implementation(Libraries.UI.bubbleTabBar)
+    implementation(Libraries.UI.activityKtx)
+    implementation(Libraries.UI.fragmentKtx)
+    implementation(Libraries.UI.cardView)
+    implementation(Libraries.UI.recyclerView)
 
-    // Coroutine
-    implementation(Libraries.Core.coroutinesCore)
-    implementation(Libraries.Core.coroutinesAndroid)
+    // Navigation
+    implementation(Libraries.Navigation.navigationUiKtx)
+    implementation(Libraries.Navigation.navigationFragmentKtx)
 
-    // Network
-    implementation(Libraries.Network.retrofit2)
-    implementation(Libraries.Network.retrofitGsonConverter)
-    implementation(Libraries.Network.httpLoggingInterceptor)
-    implementation(Libraries.Network.moshi)
-    implementation(Libraries.Network.moshiKotlin)
-
-    // Paging
-    implementation(Libraries.Paging.pagingRuntime)
-    testImplementation(Libraries.Paging.pagingCommon)
-
-    // Tests
+    // Test
     testImplementation(Libraries.Test.jUnit)
-    androidTestImplementation(Libraries.Test.jUnitAndroidTest)
     androidTestImplementation(Libraries.Test.espresso)
+    androidTestImplementation(Libraries.Test.jUnitAndroidTest)
 }

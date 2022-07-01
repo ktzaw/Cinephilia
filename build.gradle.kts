@@ -6,9 +6,7 @@ buildscript {
     dependencies {
         classpath(Libraries.Gradle.androidGradle)
         classpath(Libraries.Gradle.kotlinGradle)
-        classpath(Libraries.Gradle.googleServicesGradle)
-        classpath(Libraries.Gradle.firebaseCrashlyticsGradle)
-        classpath(Libraries.Gradle.hiltGradle)
+        classpath(Libraries.Gradle.navigationSafeArgsGradle)
     }
 }
 
