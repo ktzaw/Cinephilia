@@ -26,6 +26,7 @@ object Libraries {
         const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiControllerVersion}"
         const val animatedBottomBar = "nl.joery.animatedbottombar:library:${Versions.animatedBottomBarVersion}"
         const val bubbleTabBar = "io.ak1:bubbletabbar:${Versions.bubbleTabBar}"
+        const val smoothBottomBar = "com.github.ibrahimsn98:SmoothBottomBar:${Versions.smoothBottomBarVersion}"
         const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityVersion}"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentVersion}"
         const val cardView = "androidx.cardview:cardview:${Versions.androidXSupportVersion}"

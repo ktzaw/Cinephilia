@@ -8,20 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primaryColor">#ffffff</color>
-    <color name="primaryLightColor">#ffffff</color>
-    <color name="primaryDarkColor">#cccccc</color>
-    <color name="secondaryColor">#f44336</color>
-    <color name="secondaryLightColor">#ff7961</color>
-    <color name="secondaryDarkColor">#ba000d</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="primaryColor">#1e1e1e</color>
+    <color name="primaryLightColor">#454545</color>
+    <color name="primaryDarkColor">#000000</color>
+    <color name="secondaryColor">#dc2c25</color>
+    <color name="secondaryLightColor">#ff654f</color>
+    <color name="secondaryDarkColor">#a20000</color>
+    <color name="primaryTextColor">#d9d9d9</color>
+    <color name="secondaryTextColor">#d9d9d9</color>
 
-    <color name="bottomNavigationColor">#ffffff</color>
+    <color name="rating_color">#e4ab17</color>
 
-<!--    <color name="colorAccent">#4FABF7</color>-->
-<!--    <color name="colorPrimary">#1d2027</color>-->
-<!--    <color name="colorPrimaryDark">#000000</color>-->
-
-    <color name="drawerSelectedItemColor">#4D4FABF7</color>
+    <color name="bottomNavigationColor">#181818</color>
+    <color name="drawerSelectedItemColor">#dc2c25</color>
+    <color name="drawerItemColor">#d9d9d9</color>
 </resources>

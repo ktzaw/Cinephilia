@@ -5,6 +5,8 @@
 
     // Menu
     <string name="menu_movies">Movies</string>
+    <string name="menu_series">Series</string>
+    <string name="menu_watchlist">Watchlist</string>
     <string name="menu_favourites">Favourites</string>
 
 </resources>

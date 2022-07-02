@@ -1,19 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
-    <style name="Theme.Cinephilia" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Cinephilia" parent="Theme.MaterialComponents.NoActionBar">
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
         <!-- Status bar color. -->
+
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
         <!-- Customize your theme here. -->
-        <item name="android:statusBarColor">@color/secondaryTextColor</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <!--        <item name="fontFamily">Nunito</item>-->
 
     </style>
 

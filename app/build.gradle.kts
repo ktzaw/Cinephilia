@@ -61,6 +61,7 @@ dependencies {
     implementation(Libraries.UI.constraintLayout)
     implementation(Libraries.UI.animatedBottomBar)
     implementation(Libraries.UI.bubbleTabBar)
+    implementation(Libraries.UI.smoothBottomBar)
     implementation(Libraries.UI.activityKtx)
     implementation(Libraries.UI.fragmentKtx)
     implementation(Libraries.UI.cardView)

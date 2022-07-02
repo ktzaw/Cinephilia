@@ -7,10 +7,39 @@
         <item name="colorOnPrimary">@color/primaryTextColor</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryTextColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
+
         <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Antonio.Regular" parent="">
+        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="fontFamily">@font/antonio_regular</item>
+    </style>
+
+    <style name="QuickSand.Regular" parent="">
+        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="fontFamily">@font/quicksand_regular</item>
+    </style>
+
+    <style name="QuickSand.Regular.Bold" parent="">
+        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="fontFamily">@font/quicksand_bold</item>
+    </style>
+
+    <style name="QuickSand.Bold" parent="">
+        <item name="android:textSize">@dimen/text_size_large_1x</item>
+        <item name="fontFamily">@font/quicksand_regular</item>
+    </style>
+
+    <style name="QuickSand.Title.Bold" parent="">
+        <item name="android:textSize">@dimen/text_size_large_1x</item>
+        <item name="fontFamily">@font/quicksand_bold</item>
     </style>
 
 </resources>

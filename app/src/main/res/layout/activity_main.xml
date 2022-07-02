@@ -21,6 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
 <!--                <androidx.cardview.widget.CardView-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="@dimen/bottom_navigation_bar_height"-->
@@ -31,20 +32,61 @@
 <!--                    android:layout_margin="@dimen/margin_16"-->
 <!--                    app:layout_constraintStart_toStartOf="parent">-->
 
-        <io.ak1.BubbleTabBar
-            android:id="@+id/btm_navi"
+<!--        <io.ak1.BubbleTabBar-->
+<!--            android:id="@+id/btm_navi"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/bottom_navigation_bar_height"-->
+<!--            android:background="@color/bottomNavigationColor"-->
+<!--            android:elevation="@dimen/bottom_navigation_bar_elevation"-->
+<!--            app:bubbletab_icon_size="@dimen/margin_24"-->
+<!--            app:bubbletab_title_size="@dimen/text_size_medium_3x"-->
+<!--            app:bubbletab_menuResource="@menu/bottom_nav_menu"-->
+<!--            app:bubbletab_custom_font="@style/Antonio.Regular"-->
+<!--            app:bubbletab_tab_corner_radius="@dimen/bottom_navigation_bar_radius"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--        <nl.joery.animatedbottombar.AnimatedBottomBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:id="@+id/btm_navi"-->
+<!--            app:abb_selectedTabType="text"-->
+<!--            android:layout_height="@dimen/bottom_navigation_bar_height"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:abb_tabColorSelected="@color/primaryTextColor"-->
+<!--            app:abb_textAppearance="@style/Antonio.Regular"-->
+<!--            app:abb_indicatorHeight="@dimen/bottom_navigation_indicator_height"-->
+<!--            app:abb_tabs="@menu/bottom_nav_menu"-->
+<!--            app:abb_selectedIndex="1"-->
+<!--            app:abb_indicatorMargin="@dimen/margin_16"-->
+<!--            android:elevation="@dimen/bottom_navigation_bar_elevation"-->
+<!--            android:background="@color/bottomNavigationColor"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <me.ibrahimsn.lib.SmoothBottomBar
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_bar_height"
-            android:background="@color/secondaryTextColor"
-            android:elevation="@dimen/bottom_navigation_bar_elevation"
-            app:bubbletab_icon_size="@dimen/margin_20"
-            app:bubbletab_title_size="16sp"
-            app:bubbletab_menuResource="@menu/bottom_nav_menu"
-            app:bubbletab_custom_font="@font/nunito_bold"
-            app:bubbletab_tab_corner_radius="@dimen/bottom_navigation_bar_radius"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:itemFontFamily="@font/antonio_regular"
             app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundColor="@color/bottomNavigationColor"
+            app:indicatorColor="@color/drawerSelectedItemColor"
+            android:id="@+id/btm_navi"
+            app:textSize="@dimen/text_size_medium_1x"
+            app:iconSize="@dimen/margin_24"
+            app:menu="@menu/bottom_nav_menu"
             app:layout_constraintStart_toStartOf="parent" />
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/bottom_navigation_bar_height"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:id="@+id/btm_navi"-->
+<!--            android:background="@color/bottomNavigationColor"-->
+<!--            app:menu="@menu/bottom_nav_menu"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
 <!--                </androidx.cardview.widget.CardView>-->
     </androidx.constraintlayout.widget.ConstraintLayout>

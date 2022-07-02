@@ -17,6 +17,7 @@ object Versions {
     const val systemUiControllerVersion = "0.24.12-rc"
     const val animatedBottomBarVersion = "1.1.0"
     const val bubbleTabBar = "1.0.8"
+    const val smoothBottomBarVersion = "1.7.9"
     const val activityVersion = "1.3.1"
     const val fragmentVersion = "1.3.6"
     const val androidXSupportVersion = "1.0.0"

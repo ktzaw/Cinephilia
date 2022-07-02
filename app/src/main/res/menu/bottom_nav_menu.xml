@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/movies"
         android:checked="true"
-        android:icon="@drawable/ic_baseline_local_movies_24"
-        android:title="@string/menu_movies" />
+        android:color="@color/drawerSelectedItemColor"
+        android:icon="@drawable/ic_film"
+        android:iconTint="@color/drawerItemColor"
+        android:title=""
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/series"
+        android:color="@color/drawerSelectedItemColor"
+        android:icon="@drawable/ic_series"
+        android:iconTint="@color/drawerItemColor"
+        android:title=""
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/watchlist"
+        android:color="@color/drawerSelectedItemColor"
+        android:icon="@drawable/ic_baseline_bookmark_border_24"
+        android:title="" />
 
     <item
         android:id="@+id/favourite"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="@string/menu_favourites" />
+        android:color="@color/drawerSelectedItemColor"
+        android:icon="@drawable/ic_favourite"
+        android:iconTint="@color/drawerItemColor"
+        android:title=""
+        tools:targetApi="o" />
 
 </menu>
