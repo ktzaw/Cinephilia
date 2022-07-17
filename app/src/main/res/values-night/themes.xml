@@ -15,31 +15,9 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
 
         <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/primaryColor</item>
     </style>
 
-    <style name="Antonio.Regular" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
-        <item name="fontFamily">@font/antonio_regular</item>
-    </style>
 
-    <style name="QuickSand.Regular" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
-        <item name="fontFamily">@font/quicksand_regular</item>
-    </style>
-
-    <style name="QuickSand.Regular.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
-        <item name="fontFamily">@font/quicksand_bold</item>
-    </style>
-
-    <style name="QuickSand.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_large_1x</item>
-        <item name="fontFamily">@font/quicksand_regular</item>
-    </style>
-
-    <style name="QuickSand.Title.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_large_1x</item>
-        <item name="fontFamily">@font/quicksand_bold</item>
-    </style>
 
 </resources>

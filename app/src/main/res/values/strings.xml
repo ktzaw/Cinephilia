@@ -1,12 +1,30 @@
 <resources>
     <string name="app_name">Cinephilia</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_movies_fragment">Hello movies fragment</string>
+    <string name="hello_series_fragment">Hello series fragment</string>
+    <string name="hello_bookmark_fragment">Hello bookmark fragment</string>
+    <string name="hello_favourite_fragment">Hello favourite fragment</string>
 
     // Menu
     <string name="menu_movies">Movies</string>
     <string name="menu_series">Series</string>
     <string name="menu_watchlist">Watchlist</string>
     <string name="menu_favourites">Favourites</string>
+
+    <string name="search_movies">Search Movies</string>
+    <string name="search_series">Search Series</string>
+
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="view_all">View all</string>
+    <string name="now_playing_movies">Now Playing</string>
+    <string name="popular_movies">Popular</string>
+    <string name="upcoming_movies">Upcoming</string>
+
+    <string name="rating">Rating</string>
+    <string name="movie_title_placeholder">Movie Title</string>
+    <string name="release_date_placeholder">9.5.1893</string>
+    <string name="rating_placeholder">0.0</string>
+    <string name="content_movie_poster">Movie Poster</string>
 
 </resources>

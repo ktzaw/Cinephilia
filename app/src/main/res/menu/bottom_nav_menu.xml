@@ -3,34 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/movies"
+        android:id="@+id/moviesFragment"
         android:checked="true"
-        android:color="@color/drawerSelectedItemColor"
-        android:icon="@drawable/ic_film"
-        android:iconTint="@color/drawerItemColor"
-        android:title=""
-        tools:targetApi="o" />
+        android:icon="@drawable/ic_movies_line"
+        android:title="@string/menu_movies"/>
 
     <item
-        android:id="@+id/series"
-        android:color="@color/drawerSelectedItemColor"
-        android:icon="@drawable/ic_series"
-        android:iconTint="@color/drawerItemColor"
-        android:title=""
-        tools:targetApi="o" />
+        android:id="@+id/seriesFragment"
+        android:icon="@drawable/ic_series_line"
+        android:title="@string/menu_series"/>
 
     <item
-        android:id="@+id/watchlist"
-        android:color="@color/drawerSelectedItemColor"
-        android:icon="@drawable/ic_baseline_bookmark_border_24"
-        android:title="" />
+        android:id="@+id/watchlistFragment"
+        android:icon="@drawable/ic_bookmark_line"
+        android:title="@string/menu_watchlist" />
 
     <item
-        android:id="@+id/favourite"
-        android:color="@color/drawerSelectedItemColor"
-        android:icon="@drawable/ic_favourite"
-        android:iconTint="@color/drawerItemColor"
-        android:title=""
-        tools:targetApi="o" />
+        android:id="@+id/favouriteFragment"
+        android:icon="@drawable/ic_favourite_line"
+        android:title="@string/menu_favourites"/>
 
 </menu>
