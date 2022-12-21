@@ -2,15 +2,14 @@ package com.ktz.cinephilia.ui.screens.adapters.movies.upcomingHorizontal
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import coil.load
 import com.bumptech.glide.Glide
 import com.ktz.cinephilia.BuildConfig
 import com.ktz.cinephilia.R
-import com.ktz.cinephilia.data.domain.UpcomingMovies
 import com.ktz.cinephilia.databinding.ListItemPostersBinding
 import com.ktz.cinephilia.ui.screens.adapters.BaseAdapter
 import com.ktz.cinephilia.ui.screens.adapters.BaseViewHolder
 import com.ktz.cinephilia.ui.screens.adapters.movies.MoviesDelegate
+import com.ktz.cinephilia.ui.screens.fragments.movies.UpcomingMovies
 
 class UpcomingHorizontalAdapter(listener: MoviesDelegate) : BaseAdapter<UpcomingHorizontalAdapter.UpcomingHorizontalViewHolder, UpcomingMovies>() {
 
@@ -25,7 +24,6 @@ class UpcomingHorizontalAdapter(listener: MoviesDelegate) : BaseAdapter<Upcoming
     class UpcomingHorizontalViewHolder(private val binding: ListItemPostersBinding, private val listenter: MoviesDelegate) : BaseViewHolder<UpcomingMovies>(binding.root) {
 
         override fun setData(data: UpcomingMovies) {
-
             Glide.with(binding.ivPoster.context)
                 .load(BuildConfig.BASE_IMAGE_URL + data.posterPath)
                 .placeholder(R.drawable.ic_cinephilia_place_holder)
@@ -34,7 +32,7 @@ class UpcomingHorizontalAdapter(listener: MoviesDelegate) : BaseAdapter<Upcoming
             binding.rating = data.voteAverage.toString()
 
             binding.root.setOnClickListener {
-                mData.let {
+                it.let {
                     listenter.onItemClicked()
                 }
             }

@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16">
+        android:layout_margin="@dimen/margin_8">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPoster"
@@ -26,11 +26,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-
             <ImageView
                 android:id="@+id/ivPoster"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_cinephilia_place_holder"
+                android:contentDescription="@string/iv_poster_content" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_8"
-            android:fontFamily="@font/antonio_regular"
+            style="@style/Antonio.Regular"
             android:text="@string/rating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -52,7 +53,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_8"
             android:drawablePadding="@dimen/margin_2"
-            android:fontFamily="@font/antonio_regular"
+            style="@style/Antonio.Regular"
             android:text="@{rating, default = @string/rating_placeholder}"
             android:textColor="@color/rating_color"
             app:drawableLeftCompat="@drawable/ic_star"

@@ -31,6 +31,13 @@ object Libraries {
         const val lifeCycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
 
         const val kotlinxDateTime = "org.jetbrains.kotlinx:kotlinx-datetime:${Versions.kotlinxDatetime}"
+
+        const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+        const val roomPaging = "androidx.room:room-paging:${Versions.roomVersion}"
+
+        const val pagingKtx = "androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}"
     }
 
     object UI {

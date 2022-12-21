@@ -10,7 +10,7 @@ import com.ktz.cinephilia.ui.screens.fragments.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavouriteFragment : BaseFragment<FavouriteEvent, FavouriteViewModel>() {
+class FavouriteFragment : BaseFragment<FavouriteViewModel>() {
 
     private lateinit var binding: FragmentFavouriteBinding
 

@@ -24,28 +24,38 @@
     </style>
 
     <style name="Antonio.Regular" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="fontFamily">@font/antonio_regular</item>
     </style>
 
+    <style name="Toolbar.Antonio.Regular" parent="">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="fontFamily">@font/antonio_semibold</item>
+    </style>
+
     <style name="QuickSand.Regular" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="fontFamily">@font/quicksand_regular</item>
     </style>
 
     <style name="QuickSand.Regular.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_medium_2x</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="fontFamily">@font/quicksand_bold</item>
     </style>
 
     <style name="QuickSand.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_large_1x</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
         <item name="fontFamily">@font/quicksand_regular</item>
     </style>
 
     <style name="QuickSand.Title.Bold" parent="">
-        <item name="android:textSize">@dimen/text_size_large_1x</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
         <item name="fontFamily">@font/quicksand_bold</item>
+    </style>
+    
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:fontFamily">@font/antonio_regular</item>
     </style>
 
 </resources>

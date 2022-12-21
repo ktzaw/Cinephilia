@@ -46,10 +46,9 @@ fun <T : Any> stateFlow(block: suspend FlowCollector<StatefulData<T>>.() -> Unit
     wrapAsState { block(this) }
 }
 
-
 fun <T : Any> Flow<T>.asStatefulData(): Flow<StatefulData<T>> = wrapWithStatefulData()
     .catch {
-        Timber.e("An error occures")
+        Timber.e("An error occured")
     }
 
 fun <T : Any> Flow<T>.wrapWithStatefulData(): Flow<StatefulData<T>> = transform { value ->

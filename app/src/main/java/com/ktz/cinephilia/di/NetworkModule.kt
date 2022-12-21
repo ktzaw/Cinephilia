@@ -1,7 +1,10 @@
 package com.ktz.cinephilia.di
 
-import com.ktz.cinephilia.data.source.remote.KtorHttpClient
-import com.ktz.cinephilia.data.source.remote.MoviesApi
+import com.ktz.cinephilia.data.source.remote.api.KtorHttpClient
+import com.ktz.cinephilia.data.source.remote.api.MoviesApi
+import com.ktz.cinephilia.data.source.remote.api.MoviesApiImpl
+import com.ktz.cinephilia.data.source.remote.api.TvApi
+import com.ktz.cinephilia.data.source.remote.api.TvApiImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetwrokModule {
+object NetworkModule {
 
     @Singleton
     @Provides
@@ -19,5 +22,9 @@ class NetwrokModule {
 
     @Singleton
     @Provides
-    fun provideTestApi(client: HttpClient): MoviesApi = MoviesApi(client)
+    fun provideMoviesApi(client: HttpClient): MoviesApi = MoviesApiImpl(client)
+
+    @Singleton
+    @Provides
+    fun provideTvApi(client: HttpClient): TvApi = TvApiImpl(client)
 }

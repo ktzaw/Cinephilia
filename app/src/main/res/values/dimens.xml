@@ -7,7 +7,11 @@
     <dimen name="card_elevation">4dp</dimen>
     <dimen name="card_max_elevation">6dp</dimen>
 
+    <dimen name="toolbar_elevation">16dp</dimen>
+
     <dimen name="tv_rating_corner_radius">8dp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
 
     <dimen name="bottom_navigation_bar_height">56dp</dimen>
     <dimen name="bottom_navigation_bar_radius">30dp</dimen>
@@ -33,16 +37,16 @@
     <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_64">64dp</dimen>
 
-    <dimen name="text_size_small_1x">10sp</dimen>
-    <dimen name="text_size_medium_1x">12sp</dimen>
-    <dimen name="text_size_medium_2x">14sp</dimen>
-    <dimen name="text_size_medium_3x">16sp</dimen>
-    <dimen name="text_size_large_1x">18sp</dimen>
-    <dimen name="text_size_large_2x">20sp</dimen>
-    <dimen name="text_size_large_3x">22sp</dimen>
-    <dimen name="text_size_large_4x">24sp</dimen>
-    <dimen name="text_size_large_5x">28sp</dimen>
-    <dimen name="text_size_x_huge">32sp</dimen>
-    <dimen name="text_size_xx_huge">48sp</dimen>
-    <dimen name="text_size_xxx_huge">56sp</dimen>
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_28">28sp</dimen>
+    <dimen name="text_size_32">32sp</dimen>
+    <dimen name="text_size_48">48sp</dimen>
+    <dimen name="text_size_56">56sp</dimen>
 </resources>

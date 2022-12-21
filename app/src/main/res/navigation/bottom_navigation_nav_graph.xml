@@ -8,21 +8,28 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.ktz.cinephilia.ui.screens.fragments.movies.MoviesFragment"
-        android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        android:label="MoviesFragment"
+        tools:layout="@layout/fragment_movies" >
+
+        <action
+            android:id="@+id/action_moviesFragment_to_nav_graph_main"
+            app:destination="@id/nav_graph_main"/>
+
+    </fragment>
     <fragment
         android:id="@+id/seriesFragment"
-        android:name="com.ktz.cinephilia.ui.screens.fragments.series.SeriesFragment"
-        android:label="fragment_series"
-        tools:layout="@layout/fragment_series" />
+        android:name="com.ktz.cinephilia.ui.screens.fragments.tv.TvFragment"
+        android:label="SeriesFragment"
+        tools:layout="@layout/fragment_tv" />
     <fragment
         android:id="@+id/watchlistFragment"
         android:name="com.ktz.cinephilia.ui.screens.fragments.watchlist.WatchlistFragment"
-        android:label="fragment_watchlist"
+        android:label="WatchlistFragment"
         tools:layout="@layout/fragment_watchlist" />
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.ktz.cinephilia.ui.screens.fragments.favourite.FavouriteFragment"
-        android:label="fragment_favourite"
+        android:label="FavouriteFragment"
         tools:layout="@layout/fragment_favourite" />
+
 </navigation>

@@ -4,7 +4,7 @@ sealed class CinephiliaEvent {
 
     data class ToastMessage(val message: String) : CinephiliaEvent()
     data class SnackBarMessage(val message: String) : CinephiliaEvent()
-    data class Loading(val isLoading: Boolean) : CinephiliaEvent()
+    data class Loading(val isLoading: Boolean = true) : CinephiliaEvent()
 
-    object Nothing:CinephiliaEvent()
+    object Nothing : CinephiliaEvent()
 }

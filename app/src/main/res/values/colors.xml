@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primaryColor">#0d253f</color>
-    <color name="primaryLightColor">#394d6a</color>
+    <color name="primaryColor">#252b2b</color>
+    <color name="primaryLightColor">#4d5454</color>
     <color name="primaryDarkColor">#00001a</color>
     <color name="secondaryColor">#dc2c25</color>
     <color name="secondaryLightColor">#ff654f</color>
@@ -18,6 +18,8 @@
     <color name="secondaryTextColor">#d9d9d9</color>
 
     <color name="rating_color">#e4ab17</color>
+
+    <color name="button_watch_trailer_color">#dc2c25</color>
 
     <color name="search_color">#797979</color>
 

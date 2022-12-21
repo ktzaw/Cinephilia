@@ -15,16 +15,31 @@
     <string name="search_movies">Search Movies</string>
     <string name="search_series">Search Series</string>
 
-    <string name="top_rated_movies">Top Rated Movies</string>
     <string name="view_all">View all</string>
+
+    <string name="top_rated_movies">Top Rated Movies</string>
     <string name="now_playing_movies">Now Playing</string>
-    <string name="popular_movies">Popular</string>
-    <string name="upcoming_movies">Upcoming</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+
+    <string name="top_rated_tv">Top Rated Series</string>
+    <string name="on_air_tv">On Air</string>
+    <string name="popular_tv">Popular Series</string>
 
     <string name="rating">Rating</string>
     <string name="movie_title_placeholder">Movie Title</string>
     <string name="release_date_placeholder">9.5.1893</string>
     <string name="rating_placeholder">0.0</string>
     <string name="content_movie_poster">Movie Poster</string>
+    <string name="iv_poster_content">Tv Poster</string>
+    <string name="button_watch_trailer">Watch Trailer</string>
+    <string name="text_no_connection">Please check your connection and try again!</string>
+    <string name="content_no_connection">No Connection</string>
+
+    <string name="error_occured">An Error Occured</string>
+    <string name="null_result">Result is null.</string>
+
+    <string name="movies_full_list_toolbar_title">Movies</string>
+    <string name="tv_full_list_toolbar_title">TV</string>
 
 </resources>

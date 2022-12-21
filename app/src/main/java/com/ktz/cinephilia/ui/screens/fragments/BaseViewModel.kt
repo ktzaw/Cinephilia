@@ -1,19 +1,12 @@
 package com.ktz.cinephilia.ui.screens.fragments
 
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
 import com.ktz.cinephilia.ui.screens.CinephiliaEvent
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
 
-abstract class BaseViewModel<T> : ViewModel() {
-
-    private val _navFlow: Channel<NavDirections?> = Channel(Channel.RENDEZVOUS)
-    val navFlow: Flow<NavDirections?> = _navFlow.receiveAsFlow()
+abstract class BaseViewModel : ViewModel() {
 
     val cinephiliaEventFlow: MutableStateFlow<CinephiliaEvent> = MutableStateFlow(CinephiliaEvent.Nothing)
 
@@ -32,9 +25,4 @@ abstract class BaseViewModel<T> : ViewModel() {
         Thread.sleep(500)
         _toastMessage.value = null
     }
-
-    protected fun navigateTo(direction: NavDirections) {
-        _navFlow.trySend(direction)
-    }
-
 }

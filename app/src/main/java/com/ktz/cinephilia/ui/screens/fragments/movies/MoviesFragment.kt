@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ktz.cinephilia.data.models.remote.movies.toNowPlayingMovies
+import com.ktz.cinephilia.data.models.remote.movies.toPopularMovies
+import com.ktz.cinephilia.data.models.remote.movies.toUpcomingMovies
 import com.ktz.cinephilia.databinding.FragmentMoviesBinding
 import com.ktz.cinephilia.ui.screens.adapters.movies.MoviesDelegate
 import com.ktz.cinephilia.ui.screens.adapters.movies.nowPlayingHorizontal.NowPlayingHorizontalAdapter
@@ -14,15 +17,22 @@ import com.ktz.cinephilia.ui.screens.adapters.movies.popularHorizontal.PopularHo
 import com.ktz.cinephilia.ui.screens.adapters.movies.topRatedCarousel.TopRatedCarouselAdapter
 import com.ktz.cinephilia.ui.screens.adapters.movies.upcomingHorizontal.UpcomingHorizontalAdapter
 import com.ktz.cinephilia.ui.screens.fragments.BaseFragment
+import com.ktz.cinephilia.ui.screens.fragments.main.MainFragment
+import com.ktz.cinephilia.ui.screens.fragments.main.MainFragmentDirections
 import com.ktz.cinephilia.utils.onLoadingState
 import com.ktz.cinephilia.utils.onSuccessState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MoviesFragment : BaseFragment<MoviesEvent, MoviesViewModel>(), MoviesDelegate {
+class MoviesFragment : BaseFragment<MoviesViewModel>(), MoviesDelegate {
 
     private lateinit var binding: FragmentMoviesBinding
+
+    private val parent: MainFragment
+        get() = requireParentFragment().requireParentFragment() as MainFragment
 
     override val viewModel: MoviesViewModel by viewModels()
 
@@ -42,32 +52,72 @@ class MoviesFragment : BaseFragment<MoviesEvent, MoviesViewModel>(), MoviesDeleg
 
     override fun setupUi() {
         setupRecyclerView()
-
-        val genreMap = mutableMapOf<Int, String>()
-        val genreList = mutableListOf<String>()
+        handleLoading()
 
         viewModel.loadTopRatedMovies()
             .onSuccessState {
-                topRatedCarouselAdapter.setData(it.results)
+                topRatedCarouselAdapter.setData(it)
             }
-            .onLoadingState {
-                showQuickToastMessage("Loading")
-            }.launchIn(viewLifecycleOwner.lifecycleScope)
+            .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        viewModel.loadNowPlayingMovies().onSuccessState {
-            nowPlayingHorizontalAdapter.setData(it.results)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.loadNowPlayingMovies()
+            .onSuccessState {
+                nowPlayingHorizontalAdapter.setData(
+                    it.map { nowPlayingMoviesResponse -> nowPlayingMoviesResponse.toNowPlayingMovies() }
+                )
+                //  handleLoading()
+            }.onLoadingState {
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        viewModel.loadPopularMovies().onSuccessState {
-            popularHorizontalAdapter.setData(it.results)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.loadPopularMovies()
+            .onSuccessState {
+                popularHorizontalAdapter.setData(
+                    it.map { popularMoviesResponse -> popularMoviesResponse.toPopularMovies() }
+                )
+                //  handleLoading()
+            }.onLoadingState {
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        viewModel.loadUpcomingMovies().onSuccessState {
-            upcomingHorizontalAdapter.setData(it.results)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        viewModel.loadUpcomingMovies()
+            .onSuccessState {
+                //   handleLoading()
+
+                upcomingHorizontalAdapter.setData(
+                    it.map { upcomingMoviesResponse -> upcomingMoviesResponse.toUpcomingMovies() }
+                )
+            }.onLoadingState {
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun setupListenteners() {
+        binding.swipeRefreshLayoutMoviesList.setOnRefreshListener {
+            viewModel.refresh()
+        }
+
+        with(binding.layoutMoviesList){
+            tvNowPlayingViewAll.setOnClickListener {
+                parent.handleNavigation(MainFragmentDirections.actionMainFragmentToNowPlayingListFragment())
+            }
+
+            tvPopularViewAll.setOnClickListener {
+                parent.handleNavigation(MainFragmentDirections.actionMainFragmentToPopularMoviesListFragment())
+            }
+
+            tvUpcomingViewAll.setOnClickListener {
+                parent.handleNavigation(MainFragmentDirections.actionMainFragmentToUpcomingMoviesListFragment())
+            }
+        }
+    }
+
+    private fun handleLoading() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.loadingState.collect {
+                binding.swipeRefreshLayoutMoviesList.isRefreshing = it
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -86,5 +136,9 @@ class MoviesFragment : BaseFragment<MoviesEvent, MoviesViewModel>(), MoviesDeleg
 
     override fun onItemClicked() {
         showQuickToastMessage("Item Clicked")
+    }
+
+    private fun stopRefresh() {
+        binding.swipeRefreshLayoutMoviesList.isRefreshing = false
     }
 }

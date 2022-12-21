@@ -3,7 +3,6 @@ buildscript {
         google()
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
-        jcenter()
         maven { setUrl("https://kotlin.bintray.com/kotlinx") }
     }
 
@@ -13,6 +12,7 @@ buildscript {
         classpath(Libraries.Gradle.navigationSafeArgsGradle)
         classpath(Libraries.Gradle.kotlinSerializationGradle)
         classpath(Libraries.Gradle.hiltGradle)
+        classpath("com.android.tools.build:gradle:7.3.1")
     }
 }
 
@@ -22,7 +22,6 @@ allprojects {
         mavenCentral()
         maven { setUrl("https://jitpack.io") }
         maven { setUrl("https://kotlin.bintray.com/kotlinx") }
-        jcenter()
     }
 }
 

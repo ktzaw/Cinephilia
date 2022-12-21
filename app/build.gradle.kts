@@ -27,7 +27,7 @@ android {
         properties.load(project.rootProject.file("key.properties").inputStream())
 
         buildConfigField("String", "API_KEY", properties.getProperty("apiKey"))
-        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         buildConfigField("String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500/\"")
         buildConfigField("String", "BASE_IMAGE_ORIGINAL_SIZE_URL", "\"https://image.tmdb.org/t/p/original/\"")
     }
@@ -55,6 +55,10 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    configurations {
+
+    }
 }
 
 dependencies {
@@ -70,6 +74,12 @@ dependencies {
     implementation(Libraries.Core.lifecycleRuntimeKtx)
     implementation(Libraries.Core.kotlinxDateTime)
     implementation(Libraries.Core.lifeCycleViewModelKtx)
+    implementation(Libraries.Core.roomRuntime)
+    implementation(Libraries.Core.roomKtx)
+    implementation(Libraries.Core.roomPaging)
+    implementation(Libraries.Core.pagingKtx)
+    implementation("com.google.android.material:material:1.7.0")
+    kapt(Libraries.Core.roomCompiler)
 
     // UI
     implementation(Libraries.UI.material)

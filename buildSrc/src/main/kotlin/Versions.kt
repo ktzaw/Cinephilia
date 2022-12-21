@@ -1,7 +1,7 @@
 object Versions {
 
     // Gradle
-    const val androidGradle = "7.2.1"
+    const val androidGradle = "7.3.0"
     const val advancedBuildVersionGradle = "1.7.4"
     const val navigationSafeArgsGradle = "2.3.5"
     const val kotlinSerializationPluginVersion = "1.6.10"
@@ -18,6 +18,7 @@ object Versions {
     const val workRuntimeVersion = "2.7.0"
     const val lifecycleVersion = "2.4.0"
     const val kotlinxDatetime = "0.3.1"
+    const val roomVersion = "2.4.3"
 
     // UI
     const val androidXConstraintLayoutVersion = "2.1.4"
@@ -43,6 +44,9 @@ object Versions {
     const val hiltWorkerVersion = "1.0.0"
     const val hiltCompilerVersion = "1.0.0"
     const val daggerHiltCompilerVersion = "2.42"
+
+    // Paging
+    const val pagingVersion = "3.1.1"
 
     // Network
     const val retrofitVersion = "2.9.0"

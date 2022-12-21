@@ -5,4 +5,4 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class WatchListViewModel @Inject constructor() : BaseViewModel<WatchlistEvent>(){}
+class WatchListViewModel @Inject constructor() : BaseViewModel(){}

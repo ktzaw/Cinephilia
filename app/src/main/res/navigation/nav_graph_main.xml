@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ktz.cinephilia.ui.screens.fragments.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_nowPlayingListFragment"
+            app:destination="@id/nowPlayingListFragment"
+            app:popUpTo="@id/moviesFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_popularMoviesListFragment"
+            app:destination="@id/popularMoviesListFragment"
+            app:popUpTo="@id/moviesFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_upcomingMoviesListFragment"
+            app:destination="@id/upcomingMoviesListFragment"
+            app:popUpTo="@id/moviesFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.ktz.cinephilia.ui.screens.fragments.movies.MoviesFragment"
+        android:label="MoviesFragment"
+        tools:layout="@layout/fragment_movies">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nowPlayingListFragment"
+        android:name="com.ktz.cinephilia.ui.screens.fragments.moviesList.nowPlaying.NowPlayingListFragment"
+        android:label="NowPlayingListFragment"
+        tools:layout="@layout/fragment_now_playing_list">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/popularMoviesListFragment"
+        android:name="com.ktz.cinephilia.ui.screens.fragments.moviesList.popular.PopularMoviesListFragment"
+        android:label="PopularMoviesListFragment"
+        tools:layout="@layout/fragment_popular_movie_list" />
+
+    <fragment
+        android:id="@+id/upcomingMoviesListFragment"
+        android:name="com.ktz.cinephilia.ui.screens.fragments.moviesList.upcoming.UpcomingMoviesListFragment"
+        android:label="UpcomingMoviesListFragment"
+        tools:layout="@layout/fragment_upcoming_movie_list" />
+
+</navigation>

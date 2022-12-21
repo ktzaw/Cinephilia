@@ -10,7 +10,7 @@ import com.ktz.cinephilia.ui.screens.fragments.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WatchlistFragment : BaseFragment<WatchlistEvent, WatchListViewModel>() {
+class WatchlistFragment : BaseFragment<WatchListViewModel>() {
 
     private lateinit var binding: FragmentWatchlistBinding
 
