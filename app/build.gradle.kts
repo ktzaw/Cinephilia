@@ -26,7 +26,7 @@ android {
         val properties: Properties = Properties()
         properties.load(project.rootProject.file("key.properties").inputStream())
 
-        buildConfigField("String", "API_KEY",System.getenv("API_KEY") ?: properties.getProperty("apiKey"))
+        buildConfigField("String", "API_KEY", System.getenv("API_KEY") ?: properties.getProperty("apiKey"))
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         buildConfigField("String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500/\"")
         buildConfigField("String", "BASE_IMAGE_ORIGINAL_SIZE_URL", "\"https://image.tmdb.org/t/p/original/\"")
@@ -57,7 +57,6 @@ android {
     }
 
     configurations {
-
     }
 }
 
