@@ -88,8 +88,8 @@ object Libraries {
     }
 
     object Test {
-        const val jUnit = "junit:junit:"
-        const val jUnitAndroidTest = "androidx.test.ext:junit:${Versions.junitVersion}"
+        const val junit = "junit:junit:${Versions.junitVersion}"
+        const val jUnitAndroidTest = "androidx.test.ext:junit:${Versions.junitAndroidTestVersion}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"
         const val navigationTest = "androidx.navigation:navigation-testing:${Versions.nav_version}"
     }

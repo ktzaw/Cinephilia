@@ -126,7 +126,7 @@ dependencies {
     kapt(Libraries.Dagger.daggerHiltCompiler)
 
     // Test
-    testImplementation(Libraries.Test.jUnit)
+    testImplementation(Libraries.Test.junit)
     androidTestImplementation(Libraries.Test.espresso)
     androidTestImplementation(Libraries.Test.jUnitAndroidTest)
     androidTestImplementation(Libraries.Test.navigationTest)

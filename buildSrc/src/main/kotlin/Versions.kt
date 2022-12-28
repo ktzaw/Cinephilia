@@ -57,6 +57,7 @@ object Versions {
     const val ktorVersion = "2.0.3"
 
     // test
-    const val junitVersion = "1.1.3"
+    const val junitVersion = "4.12"
+    const val junitAndroidTestVersion = "1.1.3"
     const val espressoVersion = "3.4.0"
 }
